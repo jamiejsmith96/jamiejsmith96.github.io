@@ -3,61 +3,74 @@
 <head>
     <title>Interview Prep Guide</title>
     <style>
+        :root {
+            --primary-color: #0a4d9e; /* Bold blue */
+            --secondary-color: #f0f4f8; /* Light blue-gray */
+            --accent-color: #ff7f50; /* Coral accent */
+            --text-color: #333;
+            --heading-color: #1f2937; /* Dark gray */
+            --border-radius: 10px;
+            --spacing: 15px;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             line-height: 1.6;
-            color: #333;
-            max-width: 800px;
+            color: var(--text-color);
+            max-width: 850px;
             margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Enhanced Visual Hierarchy */
-        h1 { font-size: 2.5em; font-weight: bold; color: #2c3e50; }
-        h2 { font-size: 1.8em; font-weight: 600; margin-top: 25px; }
-        h3 { font-size: 1.3em; font-weight: 500; }
-
-        /* More Whitespace */
-        .tabcontent { padding: 20px; }
-        .accordion { margin-bottom: 10px; }
-        .panel { padding: 10px 20px; }
-
-        .overview {
+            padding: var(--spacing);
             background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 5px;
-            margin: 20px 0;
         }
 
-        .response-block {
-            background-color: #f8f9fa;
-            padding: 20px;
-            margin: 15px 0;
-            border-left: 4px solid #3498db;
+        /* Headings */
+        h1 { font-size: 2.5em; font-weight: 700; color: var(--primary-color); margin-bottom: var(--spacing); }
+        h2 { font-size: 1.8em; font-weight: 600; margin-top: 25px; color: var(--heading-color); }
+        h3 { font-size: 1.3em; font-weight: 600; color: var(--heading-color); }
+
+        /* Sections */
+        .overview, .response-block, .bullet-points, .tips {
+            background-color: white;
+            padding: calc(var(--spacing) * 1.5);
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
         }
 
-        .bullet-points {
-            background-color: #fff8dc;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 5px;
-        }
-
+        /* Key Points */
         .key-points {
-            font-weight: bold;
-            color: #2980b9;
+            font-weight: 700;
+            color: var(--primary-color);
         }
 
+        .key-message {
+            font-style: italic;
+            color: var(--text-color);
+            margin: 10px 0;
+            padding: 10px;
+            background-color: var(--secondary-color);
+            border-left: 4px solid var(--primary-color);
+            border-radius: var(--border-radius);
+        }
+
+        .result {
+            color: var(--accent-color);
+            margin-left: var(--spacing);
+        }
+
+        /* Divider */
         .divider {
-            border-top: 1px solid #eee;
+            border-top: 2px solid var(--secondary-color);
             margin: 20px 0;
         }
 
         /* Tabs */
         .tab {
             overflow: hidden;
-            border: 1px solid #ccc;
-            background-color: #f1f1f1;
+            border: none;
+            background-color: var(--secondary-color);
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing);
         }
 
         .tab button {
@@ -68,120 +81,131 @@
             cursor: pointer;
             padding: 14px 16px;
             transition: 0.3s;
-            font-size: 17px;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: var(--text-color);
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
         }
 
         .tab button:hover {
-            background-color: #ddd;
+            background-color: rgba(0, 0, 0, 0.05);
         }
 
-        /* Highlight Active Tab */
         .tab button.active {
-            background-color: #2c3e50;
-            color: white;
+            background-color: white;
+            color: var(--primary-color);
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
         }
 
         .tabcontent {
             display: none;
-            padding: 6px 12px;
-            border: 1px solid #ccc;
-            border-top: none;
+            padding: var(--spacing);
+            border: none;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
         }
 
         /* Accordion */
         .accordion {
-            background-color: #eee;
-            color: #444;
+            background-color: white;
+            color: var(--heading-color);
             cursor: pointer;
             padding: 18px;
             width: 100%;
             border: none;
             text-align: left;
             outline: none;
-            font-size: 15px;
+            font-size: 1.1em;
+            font-weight: 600;
             transition: 0.4s;
-            margin-bottom: 5px;
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing);
         }
 
-        /* Refined Accordion Colors */
-        .accordion { background-color: #f5f5f5; }
-        .accordion:hover { background-color: #e5e5e5; }
+        .accordion:hover {
+            background-color: var(--secondary-color);
+        }
 
-        /* Smooth Accordion Transitions */
         .panel {
+            padding: 0 18px;
+            display: none;
+            background-color: white;
+            overflow: hidden;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
             transition: max-height 0.3s ease-out, padding 0.3s ease-out;
             max-height: 0;
-            overflow: hidden;
         }
 
         .accordion.active + .panel {
-            max-height: 500px; /* Adjust as needed for content */
-            padding: 10px 20px;
+            max-height: 500px; /* Adjust as needed */
+            padding: 10px 18px;
         }
 
         .accordion:after {
-            content: '\002B';
-            font-size: 13px;
-            color: #777;
+            content: '+';
+            font-size: 1.2em;
+            color: var(--primary-color);
             float: right;
             margin-left: 5px;
         }
 
         .active:after {
-            content: "\2212";
+            content: "-";
         }
 
         .star-block {
-            background-color: #f7fbff;
-            padding: 15px;
-            border-left: 4px solid #3498db;
-            margin: 15px 0;
+            background-color: var(--secondary-color);
+            padding: var(--spacing);
+            border-left: 4px solid var(--primary-color);
+            margin: var(--spacing) 0;
+            border-radius: var(--border-radius);
         }
 
-        /* Refined Key Message Color */
-        .key-message {
-            font-style: italic;
-            color: #2c3e50;
-            margin: 10px 0;
-            padding: 10px;
-            background-color: #f2f9ff;
-            border-left: 4px solid #2c3e50;
-            border-radius: 4px;
-        }
-
-        .result {
-            color: #27ae60;
-            margin-left: 20px;
+        /* Lists */
+        ul, ol {
+            margin-bottom: var(--spacing);
         }
 
         .checklist {
             list-style-type: none;
-            padding-left: 20px;
+            padding-left: 0;
         }
 
         .checklist li:before {
-            content: "□ ";
-            margin-right: 5px;
+            content: "✓ ";
+            color: var(--accent-color);
+            font-weight: 700;
+            margin-right: 10px;
         }
 
-        .tips {
-            background-color: #fff8dc;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 15px 0;
-        }
+        /* Buttons */
         .expand-collapse-container {
-            margin-bottom: 20px;
-            margin-top: 20px;
+            margin-bottom: var(--spacing);
+            margin-top: var(--spacing);
+            text-align: center;
         }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            font-weight: 600;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 5px;
+        }
+
+        button:hover {
+            background-color: #073c82; /* Darker shade of blue on hover */
+        }
+
         /* Print Styles */
         @media print {
-            .tab, .accordion:after, .expand-collapse-container { display: none; } /* Hide tabs, accordion sign, buttons */
-            .accordion, .panel {
-                border: none;
-                background-color: transparent;
-            }
-            .panel { display: block; max-height: none; padding: 0; } /* Expand all accordions */
+            .tab, .accordion:after, .expand-collapse-container { display: none; }
+            .accordion, .panel { border: none; background-color: transparent; }
+            .panel { display: block; max-height: none; padding: 0; }
             h1 { font-size: 2em; }
             h2 { font-size: 1.5em; }
             h3 { font-size: 1.1em; }
@@ -198,10 +222,11 @@
     </div>
 
     <div id="Prep" class="tabcontent" style="display:block;">
-    <div class="expand-collapse-container">
-        <button onclick="expandAll('Prep')">Expand All</button>
-        <button onclick="collapseAll('Prep')">Collapse All</button>
-    </div>
+        <div class="expand-collapse-container">
+            <button onclick="expandAll('Prep')">Expand All</button>
+            <button onclick="collapseAll('Prep')">Collapse All</button>
+        </div>
+
         <div class="overview">
             <h2>Interview Overview</h2>
             <p><strong>Candidate:</strong> Jamie Smith<br>
@@ -276,7 +301,7 @@
                 <p><strong>Situation:</strong> At Cosgrove Leisure, the sales team struggled to create on-brand marketing materials due to limited design skills. This led to inconsistent branding and a less professional image.</p>
                 <p><strong>Task:</strong> I needed to develop a solution that ensured brand consistency in sales materials while being easy for non-designers to use.</p>
                 <p><strong>Action:</strong> I designed user-friendly overlay templates for Canva and PowerPoint, incorporating our brand colors, fonts, and layouts. I also created a guide on using these templates and held training sessions for the sales team.</p>
-                <p><strong>Results:</strong> This initiative achieved brand consistency across all sales materials. It also reduced the design team's workload by 40% and empowered the sales team to independently create professional-looking content.</p>
+                <p><strong>Result:</strong> This initiative achieved brand consistency across all sales materials. It also reduced the design team's workload by 40% and empowered the sales team to independently create professional-looking content.</p>
             </div>
         </div>
     
@@ -288,7 +313,7 @@
                 <p><strong>Situation:</strong> When I joined Cosgrove Leisure, we had multiple outdated websites with poor user experience, slow load times, and poor lead generation.</p>
                 <p><strong>Task:</strong> My task was to improve our web presence and lead generation within a limited budget.</p>
                 <p><strong>Action:</strong> I implemented a WordPress solution using Elementor and the Houzez theme, customized for our holiday park sales. I integrated our CRM, created an easy-to-use listing management system, added a booking system, and consolidated all parks under one website.</p>
-                <p><strong>Results:</strong> These changes significantly improved our search engine rankings, increased lead generation, and boosted sales. We achieved a more professional online presence, comparable to larger competitors, despite budget constraints.</p>
+                <p><strong>Result:</strong> These changes significantly improved our search engine rankings, increased lead generation, and boosted sales. We achieved a more professional online presence, comparable to larger competitors, despite budget constraints.</p>
             </div>
         </div>
     
@@ -300,7 +325,7 @@
                 <p><strong>Situation:</strong> At Cosgrove Leisure, I managed several digital projects simultaneously, including a website redesign, branding updates, and creating marketing collateral. The challenge was compounded by limited digital infrastructure and communication systems.</p>
                 <p><strong>Task:</strong> I needed to coordinate these projects efficiently, keep stakeholders aligned, and meet tight deadlines.</p>
                 <p><strong>Action:</strong> I used Trello for visual project management, adopted an Agile-like approach with sprints and deadlines, and used WhatsApp for communication. I also established regular milestone reviews.</p>
-                <p><strong>Results:</strong> This led to more streamlined workflows, fewer revision cycles, improved stakeholder engagement, and on-time delivery of all major projects, including the website revamp, marketing materials, and branding updates.</p>
+                <p><strong>Result:</strong> This led to more streamlined workflows, fewer revision cycles, improved stakeholder engagement, and on-time delivery of all major projects, including the website revamp, marketing materials, and branding updates.</p>
             </div>
         </div>
     
@@ -312,7 +337,7 @@
                 <p><strong>Situation:</strong> When presenting creative concepts for landing pages to non-design stakeholders, static mockups often led to misunderstandings and lengthy revisions.</p>
                 <p><strong>Task:</strong> I aimed to improve how we visualized concepts to stakeholders, streamline the feedback process, and reduce wasted development time.</p>
                 <p><strong>Action:</strong> I started creating quick interactive prototypes using the Relume Library. This allowed stakeholders to interact with the designs early on. I also implemented early prototype reviews and facilitated hands-on demonstrations.</p>
-                <p><strong>Results:</strong> This approach resulted in faster revision cycles, a quicker approval process, and better stakeholder buy-in, as the interactive prototypes made the design concepts much clearer.</p>
+                <p><strong>Result:</strong> This approach resulted in faster revision cycles, a quicker approval process, and better stakeholder buy-in, as the interactive prototypes made the design concepts much clearer.</p>
             </div>
         </div>
 
@@ -330,225 +355,193 @@
                 <li>Describe a time when you had a creative block. How did you overcome it?</li>
                 <li>Give me an example of how you handle constructive criticism.</li>
             </ul>
-            <h3>Technical/Skills-Based Questions:</h3>
-            <ul>
-                <li>Describe your experience with different design software (e.g., Adobe Creative Suite, Figma, Sketch).</li>
-                <li>What is your process for creating a brand style guide?</li>
-                <li>How do you approach designing for accessibility?</li>
-                <li>Describe your experience with UX/UI design principles.</li>
-                <li>How do you ensure consistency across different marketing channels?</li>
-                <li>What is your experience with A/B testing for design elements?</li>
-                <li>What are your preferred methods for gathering user feedback on designs?</li>
-                <li>How do you stay up-to-date with the latest design trends and technologies?</li>
-                <li>Describe your experience with creating and managing digital assets.</li>
-            </ul>
-            <h3>Design Challenge (Hypothetical):</h3>
-            <ul>
-                <li>Imagine PSI Services is launching a new online assessment tool. Design a landing page concept for this product, considering user experience, branding, and call to action.</li>
-                <li>How would you approach redesigning the PSI Services website to improve user engagement and lead generation?</li>
-                <li>Create a social media campaign concept to promote PSI's services to a new target audience.</li>
-            </ul>
-        </div>
-        <div class="divider"></div>
-    
-        <h2>Interview Strategy Tips</h2>
-        
-        <div class="tips">
-            <h3>Preparation Checklist</h3>
-            <ul class="checklist">
-                <li>Review each STAR response thoroughly and practice out loud.</li>
-                <li>Practice delivering responses within 2-3 minutes.</li>
-                <li>Prepare specific metrics and numbers to quantify your impact (e.g., "reduced workload by 40%," "increased leads by 20%").</li>
-                <li>Have additional examples ready for follow-up questions or to showcase different skills.</li>
-                <li>Research the company and interviewers thoroughly (if possible).</li>
-                <li>Prepare thoughtful questions to ask the interviewers.</li>
-            </ul>
+          <h3>Technical/Skills-Based Questions:</h3>
+          <ul>
+              <li>Describe your experience with different design software (e.g., Adobe Creative Suite, Figma, Sketch).</li>
+              <li>What is your process for creating a brand style guide?</li>
+              <li>How do you approach designing for accessibility?</li>
+              <li>Describe your experience with UX/UI design principles.</li>
+              <li>How do you ensure consistency across different marketing channels?</li>
+              <li>What is your experience with A/B testing for design elements?</li>
+              <li>What are your preferred methods for gathering user feedback on designs?</li>
+              <li>How do you stay up-to-date with the latest design trends and technologies?</li>
+              <li>Describe your experience with creating and managing digital assets.</li>
+          </ul>
+          <h3>Design Challenge (Hypothetical):</h3>
+          <ul>
+              <li>Imagine PSI Services is launching a new online assessment tool. Design a landing page concept for this product, considering user experience, branding, and call to action.</li>
+              <li>How would you approach redesigning the PSI Services website to improve user engagement and lead generation?</li>
+              <li>Create a social media campaign concept to promote PSI's services to a new target audience.</li>
+          </ul>
+      </div>
+      <div class="divider"></div>
+  
+      <h2>Interview Strategy Tips</h2>
+      
+      <div class="tips">
+          <h3>Preparation Checklist</h3>
+          <ul class="checklist">
+              <li>Review each STAR response thoroughly and practice out loud.</li>
+              <li>Practice delivering responses within 2-3 minutes.</li>
+              <li>Prepare specific metrics and numbers to quantify your impact (e.g., "reduced workload by 40%," "increased leads by 20%").</li>
+              <li>Have additional examples ready for follow-up questions or to showcase different skills.</li>
+              <li>Research the company and interviewers thoroughly (if possible).</li>
+              <li>Prepare thoughtful questions to ask the interviewers.</li>
+          </ul>
 
-            <h3>Response Framework (STAR Method)</h3>
-            <ol>
-                <li><strong>Situation:</strong> Briefly describe the context or background.</li>
-                <li><strong>Task:</strong> Explain your specific responsibility or objective.</li>
-                <li><strong>Action:</strong> Detail the steps you took to address the situation.</li>
-                <li><strong>Result:</strong> Share the positive outcomes and quantify them whenever possible.</li>
-            </ol>
+          <h3>Response Framework (STAR Method)</h3>
+          <ol>
+              <li><strong>Situation:</strong> Briefly describe the context or background.</li>
+              <li><strong>Task:</strong> Explain your specific responsibility or objective.</li>
+              <li><strong>Action:</strong> Detail the steps you took to address the situation.</li>
+              <li><strong>Result:</strong> Share the positive outcomes and quantify them whenever possible.</li>
+          </ol>
 
-            <h3>Key Competencies to Highlight</h3>
-            <ul>
-                <li><strong>Strategic Thinking:</strong> Emphasize your ability to see the bigger picture and plan accordingly.</li>
-                <li><strong>Resource Optimization:</strong> Showcase your skills in using limited resources effectively.</li>
-                <li><strong>Team Empowerment:</strong> Highlight your experience in enabling and motivating others.</li>
-                <li><strong>Stakeholder Management:</strong> Demonstrate your ability to communicate and collaborate with different stakeholders.</li>
-                <li><strong>Technical Adaptability:</strong> Show your willingness and ability to learn and use new technologies.</li>
-                <li><strong>Results-Driven Approach:</strong> Focus on the positive outcomes and impact of your work.</li>
-            </ul>
+          <h3>Key Competencies to Highlight</h3>
+          <ul>
+              <li><strong>Strategic Thinking:</strong> Emphasize your ability to see the bigger picture and plan accordingly.</li>
+              <li><strong>Resource Optimization:</strong> Showcase your skills in using limited resources effectively.</li>
+              <li><strong>Team Empowerment:</strong> Highlight your experience in enabling and motivating others.</li>
+              <li><strong>Stakeholder Management:</strong> Demonstrate your ability to communicate and collaborate with different stakeholders.</li>
+              <li><strong>Technical Adaptability:</strong> Show your willingness and ability to learn and use new technologies.</li>
+              <li><strong>Results-Driven Approach:</strong> Focus on the positive outcomes and impact of your work.</li>
+          </ul>
 
-            <h3>Follow-up Questions to Prepare For</h3>
-            <ul>
-                <li>How do you handle conflicting stakeholder feedback?</li>
-                <li>What's your approach to working within tight budget constraints?</li>
-                <li>How do you prioritize competing deadlines and manage your time effectively?</li>
-                <li>What's your process for evaluating the effectiveness of your design work?</li>
-            </ul>
-        </div>
-    </div>
-
-    <div id="During" class="tabcontent">
+          <h3>Follow-up Questions to Prepare For</h3>
+          <ul>
+              <li>How do you handle conflicting stakeholder feedback?</li>
+              <li>What's your approach to working within tight budget constraints?</li>
+              <li>How do you prioritize competing deadlines and manage your time effectively?</li>
+              <li>What's your process for evaluating the effectiveness of your design work?</li>
+          </ul>
+      </div>
+  </div>
+  <div id="During" class="tabcontent">
     <div class="expand-collapse-container">
         <button onclick="expandAll('During')">Expand All</button>
         <button onclick="collapseAll('During')">Collapse All</button>
     </div>
-        <div class="response-block">
-            <h2>Question 1: Brand Guidelines & Creativity</h2>
-            <p>"Tell me about a time you had to create marketing collateral for a brand with strict guidelines. How did you ensure consistency while also bringing creativity to the project?"</p>
-            
-            <h3>Full Response:</h3>
-            <p>"At Cosgrove Leisure, I noticed our sales team was struggling with creating consistent marketing materials due to limited design expertise. This was affecting our brand's professional image. I took the initiative to develop a solution that would maintain our brand standards while enabling creativity."</p>
-            <p><strong>Key Points to Emphasize:</strong></p>
-            <ul class="key-points">
-                <li>Problem: Inconsistent branding due to lack of design skills in the sales team.</li>
-                <li>Solution: Created user-friendly templates in Canva and PowerPoint.</li>
-                <li>Action: Developed brand guidelines and trained the sales team.</li>
-            </ul>
-            <p><strong>Metrics:</strong></p>
-            <ul>
-                <li>Reduced design team's workload by 40%.</li>
-            </ul>
-        </div>
-    
-        <div class="response-block">
-            <h2>Question 2: Website Redesign</h2>
-            <p>"Describe a situation where you had to update or redesign website content to improve user experience. How did you determine what changes were needed, and what was the impact?"</p>
-            
-            <h3>Full Response:</h3>
-            <p>"When I joined Cosgrove Leisure, we faced significant challenges with our web presence. We had multiple outdated websites with poor user experience, slow load times, and ineffective lead generation. Working with limited budget, I needed to create a solution that would improve our digital presence while being cost-effective."</p>
-            <p><strong>Key Points to Emphasize:</strong></p>
-            <ul class="key-points">
-                <li>Challenge: Outdated websites, poor UX, low lead generation, budget constraints.</li>
-                <li>Solution: Implemented WordPress with Elementor and Houzez theme.</li>
-                <li>Action: CRM integration, user-friendly listing management, booking system, website consolidation.</li>
-            </ul>
-            <p><strong>Metrics:</strong></p>
-            <ul>
-                <li>Improved search engine rankings.</li>
-                <li>Increased lead generation and sales.</li>
-            </ul>
-        </div>
-    
-        <div class="response-block">
-            <h2>Question 3: Project Management</h2>
-            <p>"Give an example of a time you managed multiple design projects with tight deadlines. How did you prioritize tasks and ensure timely delivery?"</p>
-            
-            <h3>Full Response:</h3>
-            <p>"At Cosgrove Leisure, I was managing multiple concurrent digital projects including a website redesign, branding updates, and marketing collateral creation. The challenge was amplified by minimal existing digital infrastructure and communication systems."</p>
-            <p><strong>Key Points to Emphasize:</strong></p>
-            <ul class="key-points">
-                <li>Challenge: Multiple concurrent projects, limited infrastructure, communication issues.</li>
-                <li>Solution: Implemented Trello and adapted Agile methodology.</li>
-                <li>Action: Used sprints, established deadlines, used WhatsApp for communication.</li>
-            </ul>
-            <p><strong>Metrics:</strong></p>
-            <ul>
-                <li>Streamlined workflows, fewer revision cycles, improved stakeholder engagement.</li>
-                <li>Delivered all major projects on time.</li>
-            </ul>
-        </div>
-    
-        <div class="response-block">
-            <h2>Question 4: Stakeholder Communication</h2>
-            <p>"Tell me about a time when you had to present a creative concept to a non-design team or stakeholder. How did you ensure they understood your vision?"</p>
-            
-            <h3>Full Response:</h3>
-            <p>"While creating landing pages for promotional campaigns, I often needed to present creative concepts to stakeholders with limited design background. Previously, static mockups and verbal explanations led to misunderstandings and multiple revision cycles."</p>
-            <p><strong>Key Points to Emphasize:</strong></p>
-            <ul class="key-points">
-                <li>Challenge: Communicating design concepts to non-design stakeholders.</li>
-                <li>Solution: Developed interactive prototypes using the Relume Library.</li>
-                <li>Action: Conducted early prototype reviews and hands-on demonstrations.</li>
-            </ul>
-            <p><strong>Metrics:</strong></p>
-            <ul>
-                <li>Reduced revision cycles, faster approvals, improved stakeholder buy-in.</li>
-            </ul>
-        </div>
-    
-        <div class="divider"></div>
-    
-        <div class="bullet-points">
-            <h2>General Interview Tips</h2>
-            <ul>
-                <li><strong>Be prepared to discuss the STAR method:</strong> Have examples ready for Situation, Task, Action, and Result.</li>
-                <li><strong>Focus on keywords:</strong> Emphasize brand consistency, user-friendly design, WordPress, Elementor, CRM integration, project management, stakeholder communication, interactive prototypes.</li>
-                <li><strong>Quantify your impact:</strong> Use metrics like "40% reduction," "increased leads," "faster approvals."</li>
-                <li><strong>Practice your responses:</strong> Make sure you can articulate your experiences clearly and concisely.</li>
-                <li><strong>Be enthusiastic:</strong> Show your passion for creative marketing and the opportunity at PSI Services.</li>
-            </ul>
-        </div>
 
-        <div class="divider"></div>
+    <div class="response-block">
+        <h2>Question 1: Brand Guidelines & Creativity</h2>
+        <p><strong>Challenge:</strong> Inconsistent branding due to limited design skills in the sales team.</p>
+        <p><strong>Solution:</strong> User-friendly Canva/PowerPoint templates with brand guidelines.</p>
+        <p><strong>Key Points:</strong></p>
+        <ul class="key-points">
+            <li>Empowered sales team</li>
+            <li>Maintained brand consistency</li>
+        </ul>
+        <p><strong>Metrics:</strong> 40% less workload for the design team.</p>
+    </div>
 
-        <h2>Interview Success Reminders</h2>
+    <div class="response-block">
+        <h2>Question 2: Website Redesign</h2>
+        <p><strong>Challenge:</strong> Outdated websites, poor UX, low lead generation, budget limits.</p>
+        <p><strong>Solution:</strong> WordPress, Elementor, Houzez theme, CRM integration.</p>
+        <p><strong>Key Points:</strong></p>
+        <ul class="key-points">
+            <li>Improved UX and design</li>
+            <li>Centralized website</li>
+        </ul>
+        <p><strong>Metrics:</strong> Better search rankings, more leads and sales.</p>
+    </div>
+
+    <div class="response-block">
+        <h2>Question 3: Project Management</h2>
+        <p><strong>Challenge:</strong> Multiple projects, minimal infrastructure, communication issues.</p>
+        <p><strong>Solution:</strong> Trello, Agile sprints, WhatsApp communication.</p>
+        <p><strong>Key Points:</strong></p>
+        <ul class="key-points">
+            <li>Efficient workflows</li>
+            <li>On-time delivery</li>
+        </ul>
+        <p><strong>Metrics:</strong> Fewer revisions, better stakeholder engagement.</p>
+    </div>
+
+    <div class="response-block">
+        <h2>Question 4: Stakeholder Communication</h2>
+        <p><strong>Challenge:</strong> Explaining designs to non-design stakeholders.</p>
+        <p><strong>Solution:</strong> Interactive prototypes (Relume Library).</p>
+        <p><strong>Key Points:</strong></p>
+        <ul class="key-points">
+            <li>Clearer communication</li>
+            <li>Faster approvals</li>
+        </ul>
+        <p><strong>Metrics:</strong> Reduced revisions, improved stakeholder buy-in.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="bullet-points">
+        <h2>STAR Method Reminder</h2>
         <ul>
-            <li>Maintain a confident, positive tone throughout the interview.</li>
-            <li>Use specific examples and metrics to support your claims.</li>
-            <li>Focus on your problem-solving approach and adaptability.</li>
-            <li>Emphasize your collaboration and communication skills.</li>
-            <li>Connect your responses to the specific requirements of the Creative Marketing Specialist role at PSI Services.</li>
-            <li>Show genuine enthusiasm for the opportunity and the company.</li>
+            <li><strong>S</strong>ituation</li>
+            <li><strong>T</strong>ask</li>
+            <li><strong>A</strong>ction</li>
+            <li><strong>R</strong>esult (Quantify!)</li>
         </ul>
     </div>
 
-    <script>
-        function openTab(evt, tabName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
+    <div class="divider"></div>
+
+    <div class="bullet-points">
+        <h2>Keywords</h2>
+        <p>Brand consistency, user-friendly design, WordPress, Elementor, CRM, project management, stakeholder communication, interactive prototypes, metrics, results-driven.</p>
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.display = "block";
+                panel.style.maxHeight = panel.scrollHeight + "px";
             }
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(tabName).style.display = "block";
-            evt.currentTarget.className += " active";
-        }
+        });
+    }
+     // Add Expand All/Collapse All functionality
+    function expandAll(tabId) {
+      const accordions = document.querySelectorAll(`#${tabId} .accordion`);
+      accordions.forEach(accordion => {
+        accordion.classList.add('active');
+        const panel = accordion.nextElementSibling;
+        panel.style.display = 'block';
+        panel.style.maxHeight = panel.scrollHeight + 'px'; // Set to actual height
+      });
+    }
 
-        var acc = document.getElementsByClassName("accordion");
-        var i;
-
-        for (i = 0; i < acc.length; i++) {
-            acc[i].addEventListener("click", function() {
-                this.classList.toggle("active");
-                var panel = this.nextElementSibling;
-                if (panel.style.display === "block") {
-                    panel.style.display = "none";
-                    panel.style.maxHeight = null;
-                } else {
-                    panel.style.display = "block";
-                    panel.style.maxHeight = panel.scrollHeight + "px";
-                }
-            });
-        }
-         // Add Expand All/Collapse All functionality
-        function expandAll(tabId) {
-          const accordions = document.querySelectorAll(`#${tabId} .accordion`);
-          accordions.forEach(accordion => {
-            accordion.classList.add('active');
-            const panel = accordion.nextElementSibling;
-            panel.style.display = 'block';
-            panel.style.maxHeight = panel.scrollHeight + 'px'; // Set to actual height
-          });
-        }
-
-        function collapseAll(tabId) {
-          const accordions = document.querySelectorAll(`#${tabId} .accordion`);
-          accordions.forEach(accordion => {
-            accordion.classList.remove('active');
-            const panel = accordion.nextElementSibling;
-            panel.style.display = 'none';
-            panel.style.maxHeight = null;
-          });
-        }
-    </script>
+    function collapseAll(tabId) {
+      const accordions = document.querySelectorAll(`#${tabId} .accordion`);
+      accordions.forEach(accordion => {
+        accordion.classList.remove('active');
+        const panel = accordion.nextElementSibling;
+        panel.style.display = 'none';
+        panel.style.maxHeight = null;
+      });
+    }
+</script>
 
 </body>
 </html>
