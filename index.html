@@ -1,288 +1,168 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h1 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-            margin-top: 30px;
-        }
-        h2 {
-            color: #2980b9;
-            margin-top: 25px;
-        }
-        h3 {
-            color: #3498db;
-            margin-top: 20px;
-        }
-        .overview {
-            background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 5px;
-            margin: 20px 0;
-        }
-        .star-block {
-            background-color: #f7fbff;
-            padding: 15px;
-            border-left: 4px solid #3498db;
-            margin: 15px 0;
-        }
-        .key-message {
-            font-style: italic;
-            color: #2c3e50;
-            margin: 10px 0;
-            padding: 10px;
-            background-color: #ecf0f1;
-            border-radius: 4px;
-        }
-        .result {
-            color: #27ae60;
-            margin-left: 20px;
-        }
-        .checklist {
-            list-style-type: none;
-            padding-left: 20px;
-        }
-        .checklist li:before {
-            content: "□ ";
-            margin-right: 5px;
-        }
-        .divider {
-            border-top: 1px solid #eee;
-            margin: 30px 0;
-        }
-        .tips {
-            background-color: #fff8dc;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 15px 0;
-        }
-    </style>
-</head>
-<body>
-    <h1>Creative Marketing Specialist – Interview Preparation Guide</h1>
+import React from 'react';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardContent } from "@/components/ui/card";
 
-    <div class="overview">
-        <h2>Interview Overview</h2>
-        <p><strong>Candidate:</strong> Jamie Smith<br>
-        <strong>Company:</strong> PSI Services<br>
-        <strong>Role:</strong> Creative Marketing Specialist<br>
-        <strong>Interview Type:</strong> Behavioral/Experience-Based</p>
+const InterviewPrep = () => {
+  return (
+    <div className="max-w-4xl mx-auto p-6">
+      <h1 className="text-3xl font-bold mb-6 text-blue-800">Creative Marketing Specialist – Interview Guide</h1>
+      
+      <Tabs defaultValue="prep" className="w-full">
+        <TabsList className="mb-4">
+          <TabsTrigger value="prep">Interview Preparation</TabsTrigger>
+          <TabsTrigger value="during">During Interview</TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="prep">
+          <Card>
+            <CardContent className="pt-6">
+              <div className="overview mb-6 bg-gray-50 p-4 rounded-lg">
+                <h2 className="text-xl font-semibold mb-2">Interview Overview</h2>
+                <p><strong>Candidate:</strong> Jamie Smith<br />
+                <strong>Company:</strong> PSI Services<br />
+                <strong>Role:</strong> Creative Marketing Specialist<br />
+                <strong>Interview Type:</strong> Behavioral/Experience-Based</p>
+              </div>
+
+              <h2 className="text-xl font-semibold mb-4">Key Strengths</h2>
+              <ul className="list-disc pl-6 mb-6">
+                <li>Brand consistency and template development</li>
+                <li>Cost-effective web solutions and UX improvements</li>
+                <li>Agile project management adaptation</li>
+                <li>Stakeholder communication and prototype development</li>
+              </ul>
+
+              <Accordion type="single" collapsible className="w-full">
+                <AccordionItem value="checklist">
+                  <AccordionTrigger>Preparation Checklist</AccordionTrigger>
+                  <AccordionContent>
+                    <ul className="list-disc pl-6 space-y-2">
+                      <li>Review each STAR response thoroughly</li>
+                      <li>Practice delivering responses within 2-3 minutes</li>
+                      <li>Prepare specific metrics and numbers for impact</li>
+                      <li>Have additional examples ready for follow-up questions</li>
+                    </ul>
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="competencies">
+                  <AccordionTrigger>Key Competencies</AccordionTrigger>
+                  <AccordionContent>
+                    <ul className="list-disc pl-6 space-y-2">
+                      <li>Strategic thinking</li>
+                      <li>Resource optimization</li>
+                      <li>Team empowerment</li>
+                      <li>Stakeholder management</li>
+                      <li>Technical adaptability</li>
+                      <li>Results-driven approach</li>
+                    </ul>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="during">
+          <Card>
+            <CardContent className="pt-6">
+              <Accordion type="single" collapsible className="w-full">
+                <AccordionItem value="brand">
+                  <AccordionTrigger>Brand Guidelines & Creativity</AccordionTrigger>
+                  <AccordionContent>
+                    <div className="space-y-4">
+                      <div className="bg-blue-50 p-4 rounded-lg">
+                        <h3 className="font-semibold mb-2">Key Message:</h3>
+                        <p>Empowering teams through accessible design systems</p>
+                      </div>
+                      <div className="space-y-2">
+                        <p><strong>Situation:</strong> Sales team struggled with brand consistency and lack of design expertise</p>
+                        <p><strong>Task:</strong> Create user-friendly design system while maintaining brand standards</p>
+                        <p><strong>Action:</strong> Developed overlay templates for Canva/PowerPoint, created guidelines, implemented training</p>
+                        <p><strong>Result:</strong> 40% reduction in design team workload, improved brand consistency</p>
+                      </div>
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="web">
+                  <AccordionTrigger>Website Redesign</AccordionTrigger>
+                  <AccordionContent>
+                    <div className="space-y-4">
+                      <div className="bg-blue-50 p-4 rounded-lg">
+                        <h3 className="font-semibold mb-2">Key Message:</h3>
+                        <p>Strategic transformation with limited resources</p>
+                      </div>
+                      <div className="space-y-2">
+                        <p><strong>Situation:</strong> Multiple fragmented websites with poor UX and performance</p>
+                        <p><strong>Task:</strong> Unify web presence and improve UX within budget constraints</p>
+                        <p><strong>Action:</strong> Implemented WordPress/Elementor solution with CRM integration</p>
+                        <p><strong>Result:</strong> Improved SERP rankings and lead generation</p>
+                      </div>
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="project">
+                  <AccordionTrigger>Project Management</AccordionTrigger>
+                  <AccordionContent>
+                    <div className="space-y-4">
+                      <div className="bg-blue-50 p-4 rounded-lg">
+                        <h3 className="font-semibold mb-2">Key Message:</h3>
+                        <p>Adaptive project management for maximum efficiency</p>
+                      </div>
+                      <div className="space-y-2">
+                        <p><strong>Situation:</strong> Multiple concurrent projects with minimal infrastructure</p>
+                        <p><strong>Task:</strong> Coordinate projects and maintain stakeholder alignment</p>
+                        <p><strong>Action:</strong> Implemented Trello and adapted Agile methodology</p>
+                        <p><strong>Result:</strong> Streamlined workflows and improved stakeholder engagement</p>
+                      </div>
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="stakeholder">
+                  <AccordionTrigger>Stakeholder Communication</AccordionTrigger>
+                  <AccordionContent>
+                    <div className="space-y-4">
+                      <div className="bg-blue-50 p-4 rounded-lg">
+                        <h3 className="font-semibold mb-2">Key Message:</h3>
+                        <p>Making design tangible through interactive prototyping</p>
+                      </div>
+                      <div className="space-y-2">
+                        <p><strong>Situation:</strong> Communication gaps with non-designers</p>
+                        <p><strong>Task:</strong> Improve concept visualization and streamline feedback</p>
+                        <p><strong>Action:</strong> Created interactive prototypes and early review process</p>
+                        <p><strong>Result:</strong> Faster revision cycles and enhanced stakeholder buy-in</p>
+                      </div>
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="followup">
+                  <AccordionTrigger>Follow-up Questions</AccordionTrigger>
+                  <AccordionContent>
+                    <ul className="list-disc pl-6 space-y-2">
+                      <li>How do you handle conflicting stakeholder feedback?</li>
+                      <li>What's your approach to tight budget constraints?</li>
+                      <li>How do you prioritize competing deadlines?</li>
+                      <li>What's your process for evaluating design effectiveness?</li>
+                    </ul>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </CardContent>
+          </Card>
+        </TabsContent>
+      </Tabs>
     </div>
+  );
+};
 
-    <div class="divider"></div>
-
-    <h2>Quick Reference Summary</h2>
-    <p><strong>Key strengths to emphasize:</strong></p>
-    <ul>
-        <li>Brand consistency and template development</li>
-        <li>Cost-effective web solutions and UX improvements</li>
-        <li>Agile project management adaptation</li>
-        <li>Stakeholder communication and prototype development</li>
-    </ul>
-
-    <div class="divider"></div>
-
-    <h2>Detailed Response Guide</h2>
-
-    <h3>1. Graphic Design & Branding Excellence</h3>
-    <p class="key-message">Key Message: Empowering teams through accessible design systems</p>
-    
-    <div class="star-block">
-        <p><strong>Situation:</strong></p>
-        <ul>
-            <li>Sales team struggled with brand consistency</li>
-            <li>Lack of design expertise led to inconsistent materials</li>
-            <li>Professional image affected by varying quality</li>
-        </ul>
-
-        <p><strong>Task:</strong></p>
-        <ul>
-            <li>Create user-friendly design system</li>
-            <li>Maintain brand standards</li>
-            <li>Enable non-designers to produce materials</li>
-        </ul>
-
-        <p><strong>Action:</strong></p>
-        <ul>
-            <li>Developed overlay templates for Canva/PowerPoint</li>
-            <li>Created comprehensive brand element guidelines</li>
-            <li>Implemented team training program</li>
-        </ul>
-
-        <p><strong>Results:</strong></p>
-        <ul class="results">
-            <li class="result">Brand consistency achieved across materials</li>
-            <li class="result">40% reduction in design team workload</li>
-            <li class="result">Empowered sales team to create professional content</li>
-        </ul>
-    </div>
-
-    <h3>2. Web Content & UX Management</h3>
-    <p class="key-message">Key Message: Strategic transformation with limited resources</p>
-    
-    <div class="star-block">
-        <p><strong>Situation:</strong></p>
-        <ul>
-            <li>Multiple fragmented websites</li>
-            <li>Poor UX and slow performance</li>
-            <li>Weak lead generation</li>
-        </ul>
-
-        <p><strong>Task:</strong></p>
-        <ul>
-            <li>Unify web presence</li>
-            <li>Improve UX/performance</li>
-            <li>Enhance lead generation</li>
-            <li>Work within budget constraints</li>
-        </ul>
-
-        <p><strong>Action:</strong></p>
-        <ul>
-            <li>Implemented Elementor/WordPress solution</li>
-            <li>Customized CRM integration</li>
-            <li>Created user-friendly listing management</li>
-            <li>Developed integrated booking system</li>
-            <li>Consolidated web presence</li>
-            <li>Optimized performance metrics</li>
-        </ul>
-
-        <p><strong>Results:</strong></p>
-        <ul>
-            <li class="result">Improved SERP rankings</li>
-            <li class="result">Increased lead generation</li>
-            <li class="result">Enhanced sales conversion</li>
-            <li class="result">Stronger market positioning</li>
-        </ul>
-    </div>
-
-    <h3>3. Project Management Excellence</h3>
-    <p class="key-message">Key Message: Adaptive project management for maximum efficiency</p>
-
-    <div class="star-block">
-        <p><strong>Situation:</strong></p>
-        <ul>
-            <li>Multiple concurrent projects</li>
-            <li>Minimal digital infrastructure</li>
-            <li>Communication challenges</li>
-        </ul>
-
-        <p><strong>Task:</strong></p>
-        <ul>
-            <li>Coordinate multiple projects</li>
-            <li>Maintain stakeholder alignment</li>
-            <li>Meet strict deadlines</li>
-        </ul>
-
-        <p><strong>Action:</strong></p>
-        <ul>
-            <li>Implemented Trello for visual management</li>
-            <li>Adapted Agile methodology</li>
-            <li>Utilized WhatsApp for stakeholder communication</li>
-            <li>Established milestone review system</li>
-        </ul>
-
-        <p><strong>Results:</strong></p>
-        <ul>
-            <li class="result">Streamlined project workflows</li>
-            <li class="result">Reduced revision cycles</li>
-            <li class="result">Improved stakeholder engagement</li>
-            <li class="result">On-time project delivery</li>
-        </ul>
-    </div>
-
-    <h3>4. Stakeholder Communication</h3>
-    <p class="key-message">Key Message: Making design tangible through interactive prototyping</p>
-
-    <div class="star-block">
-        <p><strong>Situation:</strong></p>
-        <ul>
-            <li>Communication gaps with non-designers</li>
-            <li>Misunderstandings from static mockups</li>
-            <li>Inefficient revision cycles</li>
-        </ul>
-
-        <p><strong>Task:</strong></p>
-        <ul>
-            <li>Improve concept visualization</li>
-            <li>Streamline feedback process</li>
-            <li>Reduce development waste</li>
-        </ul>
-
-        <p><strong>Action:</strong></p>
-        <ul>
-            <li>Created interactive prototypes</li>
-            <li>Implemented early prototype reviews</li>
-            <li>Facilitated hands-on demonstrations</li>
-        </ul>
-
-        <p><strong>Results:</strong></p>
-        <ul>
-            <li class="result">Faster revision cycles</li>
-            <li class="result">Accelerated approval process</li>
-            <li class="result">Enhanced stakeholder buy-in</li>
-        </ul>
-    </div>
-
-    <div class="divider"></div>
-
-    <h2>Interview Strategy Tips</h2>
-    
-    <div class="tips">
-        <h3>Preparation Checklist</h3>
-        <ul class="checklist">
-            <li>Review each STAR response thoroughly</li>
-            <li>Practice delivering responses within 2-3 minutes</li>
-            <li>Prepare specific metrics and numbers for impact</li>
-            <li>Have additional examples ready for follow-up questions</li>
-        </ul>
-
-        <h3>Response Framework</h3>
-        <ol>
-            <li>Start with the broader context</li>
-            <li>Focus on specific actions taken</li>
-            <li>Emphasize measurable results</li>
-            <li>Connect outcomes to business impact</li>
-        </ol>
-
-        <h3>Key Competencies to Highlight</h3>
-        <ul>
-            <li>Strategic thinking</li>
-            <li>Resource optimization</li>
-            <li>Team empowerment</li>
-            <li>Stakeholder management</li>
-            <li>Technical adaptability</li>
-            <li>Results-driven approach</li>
-        </ul>
-
-        <h3>Follow-up Questions to Prepare For</h3>
-        <ul>
-            <li>How do you handle conflicting stakeholder feedback?</li>
-            <li>What's your approach to tight budget constraints?</li>
-            <li>How do you prioritize competing deadlines?</li>
-            <li>What's your process for evaluating design effectiveness?</li>
-        </ul>
-    </div>
-
-    <div class="divider"></div>
-
-    <h2>Interview Success Reminders</h2>
-    <ul>
-        <li>Maintain a confident, positive tone</li>
-        <li>Use specific examples and metrics</li>
-        <li>Focus on problem-solving approach</li>
-        <li>Emphasize collaboration and adaptability</li>
-        <li>Connect responses to role requirements</li>
-        <li>Show enthusiasm for the opportunity</li>
-    </ul>
-</body>
-</html>
+export default InterviewPrep;
