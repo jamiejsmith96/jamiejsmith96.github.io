@@ -12,13 +12,15 @@
             padding: 20px;
         }
 
-        h1, h2, h3 {
-            color: #2c3e50;
-        }
+        /* Enhanced Visual Hierarchy */
+        h1 { font-size: 2.5em; font-weight: bold; color: #2c3e50; }
+        h2 { font-size: 1.8em; font-weight: 600; margin-top: 25px; }
+        h3 { font-size: 1.3em; font-weight: 500; }
 
-        h2 {
-            margin-top: 25px;
-        }
+        /* More Whitespace */
+        .tabcontent { padding: 20px; }
+        .accordion { margin-bottom: 10px; }
+        .panel { padding: 10px 20px; }
 
         .overview {
             background-color: #f8f9fa;
@@ -26,7 +28,7 @@
             border-radius: 5px;
             margin: 20px 0;
         }
-        
+
         .response-block {
             background-color: #f8f9fa;
             padding: 20px;
@@ -73,8 +75,10 @@
             background-color: #ddd;
         }
 
+        /* Highlight Active Tab */
         .tab button.active {
-            background-color: #ccc;
+            background-color: #2c3e50;
+            color: white;
         }
 
         .tabcontent {
@@ -99,19 +103,24 @@
             margin-bottom: 5px;
         }
 
-        .active, .accordion:hover {
-            background-color: #ccc;
-        }
+        /* Refined Accordion Colors */
+        .accordion { background-color: #f5f5f5; }
+        .accordion:hover { background-color: #e5e5e5; }
 
+        /* Smooth Accordion Transitions */
         .panel {
-            padding: 0 18px;
-            display: none;
-            background-color: white;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            max-height: 0;
             overflow: hidden;
         }
 
+        .accordion.active + .panel {
+            max-height: 500px; /* Adjust as needed for content */
+            padding: 10px 20px;
+        }
+
         .accordion:after {
-            content: '\002B'; /* Unicode character for "plus" sign (+) */
+            content: '\002B';
             font-size: 13px;
             color: #777;
             float: right;
@@ -119,39 +128,63 @@
         }
 
         .active:after {
-            content: "\2212"; /* Unicode character for "minus" sign (-) */
+            content: "\2212";
         }
+
         .star-block {
             background-color: #f7fbff;
             padding: 15px;
             border-left: 4px solid #3498db;
             margin: 15px 0;
         }
+
+        /* Refined Key Message Color */
         .key-message {
             font-style: italic;
             color: #2c3e50;
             margin: 10px 0;
             padding: 10px;
-            background-color: #ecf0f1;
+            background-color: #f2f9ff;
+            border-left: 4px solid #2c3e50;
             border-radius: 4px;
         }
+
         .result {
             color: #27ae60;
             margin-left: 20px;
         }
+
         .checklist {
             list-style-type: none;
             padding-left: 20px;
         }
+
         .checklist li:before {
             content: "□ ";
             margin-right: 5px;
         }
+
         .tips {
             background-color: #fff8dc;
             padding: 15px;
             border-radius: 5px;
             margin: 15px 0;
+        }
+        .expand-collapse-container {
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+        /* Print Styles */
+        @media print {
+            .tab, .accordion:after, .expand-collapse-container { display: none; } /* Hide tabs, accordion sign, buttons */
+            .accordion, .panel {
+                border: none;
+                background-color: transparent;
+            }
+            .panel { display: block; max-height: none; padding: 0; } /* Expand all accordions */
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.5em; }
+            h3 { font-size: 1.1em; }
         }
     </style>
 </head>
@@ -165,6 +198,10 @@
     </div>
 
     <div id="Prep" class="tabcontent" style="display:block;">
+    <div class="expand-collapse-container">
+        <button onclick="expandAll('Prep')">Expand All</button>
+        <button onclick="collapseAll('Prep')">Collapse All</button>
+    </div>
         <div class="overview">
             <h2>Interview Overview</h2>
             <p><strong>Candidate:</strong> Jamie Smith<br>
@@ -172,39 +209,74 @@
             <strong>Role:</strong> Creative Marketing Specialist<br>
             <strong>Interview Type:</strong> Behavioral/Experience-Based</p>
         </div>
-    
+
+        <button class="accordion">Company Research</button>
+        <div class="panel">
+            <h3>Key Areas to Research:</h3>
+            <ul>
+                <li><strong>PSI Services Website:</strong> Thoroughly review their website, especially the "About Us," "Services," "Clients," and "News/Blog" sections.</li>
+                <li><strong>Recent News:</strong> Search for recent news articles about PSI Services on Google News or other reputable sources. Look for information about new products, partnerships, awards, or leadership changes.</li>
+                <li><strong>Company Values:</strong> Identify PSI's core values and mission statement. Consider how your values align with theirs.</li>
+                <li><strong>Competitors:</strong> Research PSI's main competitors in the assessment and talent management industry. Understand their strengths and weaknesses compared to PSI.</li>
+                <li><strong>Products/Services:</strong> Gain a deep understanding of PSI's specific products and services, especially those relevant to the Creative Marketing Specialist role.</li>
+                <li><strong>Clients:</strong> Research PSI's clients, particularly in industries you have experience with. This will help you tailor your examples.</li>
+                <li><strong>LinkedIn Page:</strong> Review PSI's LinkedIn page for company updates, employee profiles, and recent activity.</li>
+            </ul>
+            <h3>Resources:</h3>
+            <ul>
+                <li>PSI Services Website: [insert link]</li>
+                <li>PSI Services LinkedIn Page: [insert link]</li>
+                <li>Google News (Search for "PSI Services")</li>
+                <li>Industry News Sites (e.g., assessment, talent management, certification)</li>
+            </ul>
+        </div>
+
+        <button class="accordion">Interviewer Research</button>
+        <div class="panel">
+            <p>If you know the names of your interviewers, research them on LinkedIn to understand their professional background and experience at PSI. This can help you anticipate their perspective and tailor your responses accordingly.</p>
+            <h3>Tips for Interviewer Research:</h3>
+            <ul>
+                <li><strong>LinkedIn Profiles:</strong> Look for their current role, previous experience, education, skills, and any shared connections.</li>
+                <li><strong>Activity:</strong> Note any articles they've written, posts they've shared, or groups they're part of. This can give you insights into their interests and expertise.</li>
+                <li><strong>Common Ground:</strong> Identify any common ground you might have, such as shared connections, education, or previous employers.</li>
+            </ul>
+        </div>
+
+        <button class="accordion">Questions to Ask</button>
+        <div class="panel">
+            <h3>Questions About the Role:</h3>
+            <ul>
+                <li>Can you describe the day-to-day responsibilities of this role in more detail?</li>
+                <li>What are the key performance indicators (KPIs) for this role?</li>
+                <li>What are the biggest challenges facing the Creative Marketing Specialist in this role?</li>
+                <li>What opportunities are there for professional development and growth within this role?</li>
+                <li>What tools and technologies does the marketing team use? (e.g., Adobe Creative Suite, project management software, marketing automation platforms)</li>
+            </ul>
+            <h3>Questions About the Team:</h3>
+            <ul>
+                <li>Can you tell me more about the marketing team's structure and how this role fits within it?</li>
+                <li>How would you describe the team's culture and working style?</li>
+                <li>Who are the key stakeholders this role will collaborate with?</li>
+                <li>What are the team's current priorities and goals?</li>
+            </ul>
+            <h3>Questions About the Company:</h3>
+            <ul>
+                <li>How would you describe PSI's company culture?</li>
+                <li>What are PSI's plans for growth and expansion in the coming years?</li>
+                <li>How does PSI foster innovation and creativity within the marketing department?</li>
+                <li>What are some of PSI's proudest accomplishments or initiatives in the area of [relevant industry/area]?</li>
+            </ul>
+        </div>
+
         <button class="accordion">Graphic Design & Branding Excellence</button>
         <div class="panel">
             <p class="key-message">Key Message: Empowering teams through accessible design systems</p>
             
             <div class="star-block">
-                <p><strong>Situation:</strong></p>
-                <ul>
-                    <li>Sales team struggled with brand consistency</li>
-                    <li>Lack of design expertise led to inconsistent materials</li>
-                    <li>Professional image affected by varying quality</li>
-                </ul>
-    
-                <p><strong>Task:</strong></p>
-                <ul>
-                    <li>Create user-friendly design system</li>
-                    <li>Maintain brand standards</li>
-                    <li>Enable non-designers to produce materials</li>
-                </ul>
-    
-                <p><strong>Action:</strong></p>
-                <ul>
-                    <li>Developed overlay templates for Canva/PowerPoint</li>
-                    <li>Created comprehensive brand element guidelines</li>
-                    <li>Implemented team training program</li>
-                </ul>
-    
-                <p><strong>Results:</strong></p>
-                <ul class="results">
-                    <li class="result">Brand consistency achieved across materials</li>
-                    <li class="result">40% reduction in design team workload</li>
-                    <li class="result">Empowered sales team to create professional content</li>
-                </ul>
+                <p><strong>Situation:</strong> At Cosgrove Leisure, the sales team struggled to create on-brand marketing materials due to limited design skills. This led to inconsistent branding and a less professional image.</p>
+                <p><strong>Task:</strong> I needed to develop a solution that ensured brand consistency in sales materials while being easy for non-designers to use.</p>
+                <p><strong>Action:</strong> I designed user-friendly overlay templates for Canva and PowerPoint, incorporating our brand colors, fonts, and layouts. I also created a guide on using these templates and held training sessions for the sales team.</p>
+                <p><strong>Results:</strong> This initiative achieved brand consistency across all sales materials. It also reduced the design team's workload by 40% and empowered the sales team to independently create professional-looking content.</p>
             </div>
         </div>
     
@@ -213,38 +285,10 @@
             <p class="key-message">Key Message: Strategic transformation with limited resources</p>
             
             <div class="star-block">
-                <p><strong>Situation:</strong></p>
-                <ul>
-                    <li>Multiple fragmented websites</li>
-                    <li>Poor UX and slow performance</li>
-                    <li>Weak lead generation</li>
-                </ul>
-    
-                <p><strong>Task:</strong></p>
-                <ul>
-                    <li>Unify web presence</li>
-                    <li>Improve UX/performance</li>
-                    <li>Enhance lead generation</li>
-                    <li>Work within budget constraints</li>
-                </ul>
-    
-                <p><strong>Action:</strong></p>
-                <ul>
-                    <li>Implemented Elementor/WordPress solution</li>
-                    <li>Customized CRM integration</li>
-                    <li>Created user-friendly listing management</li>
-                    <li>Developed integrated booking system</li>
-                    <li>Consolidated web presence</li>
-                    <li>Optimized performance metrics</li>
-                </ul>
-    
-                <p><strong>Results:</strong></p>
-                <ul>
-                    <li class="result">Improved SERP rankings</li>
-                    <li class="result">Increased lead generation</li>
-                    <li class="result">Enhanced sales conversion</li>
-                    <li class="result">Stronger market positioning</li>
-                </ul>
+                <p><strong>Situation:</strong> When I joined Cosgrove Leisure, we had multiple outdated websites with poor user experience, slow load times, and poor lead generation.</p>
+                <p><strong>Task:</strong> My task was to improve our web presence and lead generation within a limited budget.</p>
+                <p><strong>Action:</strong> I implemented a WordPress solution using Elementor and the Houzez theme, customized for our holiday park sales. I integrated our CRM, created an easy-to-use listing management system, added a booking system, and consolidated all parks under one website.</p>
+                <p><strong>Results:</strong> These changes significantly improved our search engine rankings, increased lead generation, and boosted sales. We achieved a more professional online presence, comparable to larger competitors, despite budget constraints.</p>
             </div>
         </div>
     
@@ -253,35 +297,10 @@
             <p class="key-message">Key Message: Adaptive project management for maximum efficiency</p>
     
             <div class="star-block">
-                <p><strong>Situation:</strong></p>
-                <ul>
-                    <li>Multiple concurrent projects</li>
-                    <li>Minimal digital infrastructure</li>
-                    <li>Communication challenges</li>
-                </ul>
-    
-                <p><strong>Task:</strong></p>
-                <ul>
-                    <li>Coordinate multiple projects</li>
-                    <li>Maintain stakeholder alignment</li>
-                    <li>Meet strict deadlines</li>
-                </ul>
-    
-                <p><strong>Action:</strong></p>
-                <ul>
-                    <li>Implemented Trello for visual management</li>
-                    <li>Adapted Agile methodology</li>
-                    <li>Utilized WhatsApp for stakeholder communication</li>
-                    <li>Established milestone review system</li>
-                </ul>
-    
-                <p><strong>Results:</strong></p>
-                <ul>
-                    <li class="result">Streamlined project workflows</li>
-                    <li class="result">Reduced revision cycles</li>
-                    <li class="result">Improved stakeholder engagement</li>
-                    <li class="result">On-time project delivery</li>
-                </ul>
+                <p><strong>Situation:</strong> At Cosgrove Leisure, I managed several digital projects simultaneously, including a website redesign, branding updates, and creating marketing collateral. The challenge was compounded by limited digital infrastructure and communication systems.</p>
+                <p><strong>Task:</strong> I needed to coordinate these projects efficiently, keep stakeholders aligned, and meet tight deadlines.</p>
+                <p><strong>Action:</strong> I used Trello for visual project management, adopted an Agile-like approach with sprints and deadlines, and used WhatsApp for communication. I also established regular milestone reviews.</p>
+                <p><strong>Results:</strong> This led to more streamlined workflows, fewer revision cycles, improved stakeholder engagement, and on-time delivery of all major projects, including the website revamp, marketing materials, and branding updates.</p>
             </div>
         </div>
     
@@ -290,34 +309,45 @@
             <p class="key-message">Key Message: Making design tangible through interactive prototyping</p>
     
             <div class="star-block">
-                <p><strong>Situation:</strong></p>
-                <ul>
-                    <li>Communication gaps with non-designers</li>
-                    <li>Misunderstandings from static mockups</li>
-                    <li>Inefficient revision cycles</li>
-                </ul>
-    
-                <p><strong>Task:</strong></p>
-                <ul>
-                    <li>Improve concept visualization</li>
-                    <li>Streamline feedback process</li>
-                    <li>Reduce development waste</li>
-                </ul>
-    
-                <p><strong>Action:</strong></p>
-                <ul>
-                    <li>Created interactive prototypes</li>
-                    <li>Implemented early prototype reviews</li>
-                    <li>Facilitated hands-on demonstrations</li>
-                </ul>
-    
-                <p><strong>Results:</strong></p>
-                <ul>
-                    <li class="result">Faster revision cycles</li>
-                    <li class="result">Accelerated approval process</li>
-                    <li class="result">Enhanced stakeholder buy-in</li>
-                </ul>
+                <p><strong>Situation:</strong> When presenting creative concepts for landing pages to non-design stakeholders, static mockups often led to misunderstandings and lengthy revisions.</p>
+                <p><strong>Task:</strong> I aimed to improve how we visualized concepts to stakeholders, streamline the feedback process, and reduce wasted development time.</p>
+                <p><strong>Action:</strong> I started creating quick interactive prototypes using the Relume Library. This allowed stakeholders to interact with the designs early on. I also implemented early prototype reviews and facilitated hands-on demonstrations.</p>
+                <p><strong>Results:</strong> This approach resulted in faster revision cycles, a quicker approval process, and better stakeholder buy-in, as the interactive prototypes made the design concepts much clearer.</p>
             </div>
+        </div>
+
+        <button class="accordion">Additional Practice Prompts</button>
+        <div class="panel">
+            <h3>Behavioral Questions:</h3>
+            <ul>
+                <li>Tell me about a time you failed. How did you handle the situation?</li>
+                <li>Describe a time you had to work with a difficult stakeholder. How did you navigate the relationship?</li>
+                <li>Give an example of a time you had to persuade someone to see your point of view.</li>
+                <li>Tell me about a time you had to learn a new skill or technology quickly.</li>
+                <li>Describe a time you had to deal with ambiguity or uncertainty on a project.</li>
+                <li>How do you stay organized and prioritize tasks when managing multiple projects?</li>
+                <li>Tell me about a time you had to adapt to a major change in direction on a project.</li>
+                <li>Describe a time when you had a creative block. How did you overcome it?</li>
+                <li>Give me an example of how you handle constructive criticism.</li>
+            </ul>
+            <h3>Technical/Skills-Based Questions:</h3>
+            <ul>
+                <li>Describe your experience with different design software (e.g., Adobe Creative Suite, Figma, Sketch).</li>
+                <li>What is your process for creating a brand style guide?</li>
+                <li>How do you approach designing for accessibility?</li>
+                <li>Describe your experience with UX/UI design principles.</li>
+                <li>How do you ensure consistency across different marketing channels?</li>
+                <li>What is your experience with A/B testing for design elements?</li>
+                <li>What are your preferred methods for gathering user feedback on designs?</li>
+                <li>How do you stay up-to-date with the latest design trends and technologies?</li>
+                <li>Describe your experience with creating and managing digital assets.</li>
+            </ul>
+            <h3>Design Challenge (Hypothetical):</h3>
+            <ul>
+                <li>Imagine PSI Services is launching a new online assessment tool. Design a landing page concept for this product, considering user experience, branding, and call to action.</li>
+                <li>How would you approach redesigning the PSI Services website to improve user engagement and lead generation?</li>
+                <li>Create a social media campaign concept to promote PSI's services to a new target audience.</li>
+            </ul>
         </div>
         <div class="divider"></div>
     
@@ -326,60 +356,62 @@
         <div class="tips">
             <h3>Preparation Checklist</h3>
             <ul class="checklist">
-                <li>Review each STAR response thoroughly</li>
-                <li>Practice delivering responses within 2-3 minutes</li>
-                <li>Prepare specific metrics and numbers for impact</li>
-                <li>Have additional examples ready for follow-up questions</li>
+                <li>Review each STAR response thoroughly and practice out loud.</li>
+                <li>Practice delivering responses within 2-3 minutes.</li>
+                <li>Prepare specific metrics and numbers to quantify your impact (e.g., "reduced workload by 40%," "increased leads by 20%").</li>
+                <li>Have additional examples ready for follow-up questions or to showcase different skills.</li>
+                <li>Research the company and interviewers thoroughly (if possible).</li>
+                <li>Prepare thoughtful questions to ask the interviewers.</li>
             </ul>
-    
-            <h3>Response Framework</h3>
+
+            <h3>Response Framework (STAR Method)</h3>
             <ol>
-                <li>Start with the broader context</li>
-                <li>Focus on specific actions taken</li>
-                <li>Emphasize measurable results</li>
-                <li>Connect outcomes to business impact</li>
+                <li><strong>Situation:</strong> Briefly describe the context or background.</li>
+                <li><strong>Task:</strong> Explain your specific responsibility or objective.</li>
+                <li><strong>Action:</strong> Detail the steps you took to address the situation.</li>
+                <li><strong>Result:</strong> Share the positive outcomes and quantify them whenever possible.</li>
             </ol>
-    
+
             <h3>Key Competencies to Highlight</h3>
             <ul>
-                <li>Strategic thinking</li>
-                <li>Resource optimization</li>
-                <li>Team empowerment</li>
-                <li>Stakeholder management</li>
-                <li>Technical adaptability</li>
-                <li>Results-driven approach</li>
+                <li><strong>Strategic Thinking:</strong> Emphasize your ability to see the bigger picture and plan accordingly.</li>
+                <li><strong>Resource Optimization:</strong> Showcase your skills in using limited resources effectively.</li>
+                <li><strong>Team Empowerment:</strong> Highlight your experience in enabling and motivating others.</li>
+                <li><strong>Stakeholder Management:</strong> Demonstrate your ability to communicate and collaborate with different stakeholders.</li>
+                <li><strong>Technical Adaptability:</strong> Show your willingness and ability to learn and use new technologies.</li>
+                <li><strong>Results-Driven Approach:</strong> Focus on the positive outcomes and impact of your work.</li>
             </ul>
-    
+
             <h3>Follow-up Questions to Prepare For</h3>
             <ul>
                 <li>How do you handle conflicting stakeholder feedback?</li>
-                <li>What's your approach to tight budget constraints?</li>
-                <li>How do you prioritize competing deadlines?</li>
-                <li>What's your process for evaluating design effectiveness?</li>
+                <li>What's your approach to working within tight budget constraints?</li>
+                <li>How do you prioritize competing deadlines and manage your time effectively?</li>
+                <li>What's your process for evaluating the effectiveness of your design work?</li>
             </ul>
         </div>
     </div>
 
     <div id="During" class="tabcontent">
+    <div class="expand-collapse-container">
+        <button onclick="expandAll('During')">Expand All</button>
+        <button onclick="collapseAll('During')">Collapse All</button>
+    </div>
         <div class="response-block">
             <h2>Question 1: Brand Guidelines & Creativity</h2>
             <p>"Tell me about a time you had to create marketing collateral for a brand with strict guidelines. How did you ensure consistency while also bringing creativity to the project?"</p>
             
             <h3>Full Response:</h3>
-            <p>"At Cosgrove Leisure, I noticed our sales team was struggling with creating consistent marketing materials due to limited design expertise. This was affecting our brand's professional image. I took the initiative to develop a solution that would maintain our brand standards while enabling creativity.</p>
-            
-            <p>I designed a set of overlay templates compatible with accessible tools like Canva and PowerPoint, moving away from the requirement for Adobe Creative Suite. These templates incorporated our defined brand elements - colors, fonts, and layouts - while providing enough flexibility for creative expression. I also conducted hands-on training sessions to ensure the team could effectively use these resources.</p>
-            
-            <p>As a result, we saw immediate improvements in brand consistency across all materials, reduced the design team's workload by 40%, and empowered our sales team to create professional content independently. This solution not only maintained our brand integrity but also improved our overall efficiency."</p>
-        </div>
-    
-        <div class="bullet-points">
-            <h3>Key Points to Remember:</h3>
+            <p>"At Cosgrove Leisure, I noticed our sales team was struggling with creating consistent marketing materials due to limited design expertise. This was affecting our brand's professional image. I took the initiative to develop a solution that would maintain our brand standards while enabling creativity."</p>
+            <p><strong>Key Points to Emphasize:</strong></p>
+            <ul class="key-points">
+                <li>Problem: Inconsistent branding due to lack of design skills in the sales team.</li>
+                <li>Solution: Created user-friendly templates in Canva and PowerPoint.</li>
+                <li>Action: Developed brand guidelines and trained the sales team.</li>
+            </ul>
+            <p><strong>Metrics:</strong></p>
             <ul>
-                <li>Emphasize problem identification: inconsistent branding</li>
-                <li>Highlight solution: user-friendly templates</li>
-                <li>Mention specific tools: Canva, PowerPoint</li>
-                <li>Quote the 40% workload reduction statistic</li>
+                <li>Reduced design team's workload by 40%.</li>
             </ul>
         </div>
     
@@ -388,20 +420,17 @@
             <p>"Describe a situation where you had to update or redesign website content to improve user experience. How did you determine what changes were needed, and what was the impact?"</p>
             
             <h3>Full Response:</h3>
-            <p>"When I joined Cosgrove Leisure, we faced significant challenges with our web presence. We had multiple outdated websites with poor user experience, slow load times, and ineffective lead generation. Working with limited budget, I needed to create a solution that would improve our digital presence while being cost-effective.</p>
-            
-            <p>I implemented a WordPress solution using Elementor and the Houzez theme, which we customized for our holiday park sales. I integrated this with our CRM system and created a user-friendly listing management system that our non-technical staff could easily update. We also added a booking system and consolidated all our parks under one central website.</p>
-            
-            <p>These changes led to significant improvements in our search rankings, increased lead generation, and ultimately drove sales growth. We achieved a more professional online presence that put us on par with larger competitors, despite our budget constraints."</p>
-        </div>
-    
-        <div class="bullet-points">
-            <h3>Key Points to Remember:</h3>
+            <p>"When I joined Cosgrove Leisure, we faced significant challenges with our web presence. We had multiple outdated websites with poor user experience, slow load times, and ineffective lead generation. Working with limited budget, I needed to create a solution that would improve our digital presence while being cost-effective."</p>
+            <p><strong>Key Points to Emphasize:</strong></p>
+            <ul class="key-points">
+                <li>Challenge: Outdated websites, poor UX, low lead generation, budget constraints.</li>
+                <li>Solution: Implemented WordPress with Elementor and Houzez theme.</li>
+                <li>Action: CRM integration, user-friendly listing management, booking system, website consolidation.</li>
+            </ul>
+            <p><strong>Metrics:</strong></p>
             <ul>
-                <li>Focus on the budget constraint challenge</li>
-                <li>Mention specific technologies: WordPress, Elementor</li>
-                <li>Emphasize user-friendly solutions for staff</li>
-                <li>Highlight measurable improvements in rankings and leads</li>
+                <li>Improved search engine rankings.</li>
+                <li>Increased lead generation and sales.</li>
             </ul>
         </div>
     
@@ -410,20 +439,17 @@
             <p>"Give an example of a time you managed multiple design projects with tight deadlines. How did you prioritize tasks and ensure timely delivery?"</p>
             
             <h3>Full Response:</h3>
-            <p>"At Cosgrove Leisure, I was managing multiple concurrent digital projects including a website redesign, branding updates, and marketing collateral creation. The challenge was amplified by minimal existing digital infrastructure and communication systems.</p>
-            
-            <p>I implemented Trello for visual project management and adopted an Agile-inspired approach, breaking projects into sprints with both soft and hard deadlines. Recognizing our team's preferences, I used WhatsApp as our primary communication tool, which proved more effective than traditional project management platforms.</p>
-            
-            <p>This approach resulted in improved efficiency, fewer revision cycles, and better stakeholder engagement. We successfully delivered all major projects on time, including the website revamp, marketing materials, and branding updates."</p>
-        </div>
-    
-        <div class="bullet-points">
-            <h3>Key Points to Remember:</h3>
+            <p>"At Cosgrove Leisure, I was managing multiple concurrent digital projects including a website redesign, branding updates, and marketing collateral creation. The challenge was amplified by minimal existing digital infrastructure and communication systems."</p>
+            <p><strong>Key Points to Emphasize:</strong></p>
+            <ul class="key-points">
+                <li>Challenge: Multiple concurrent projects, limited infrastructure, communication issues.</li>
+                <li>Solution: Implemented Trello and adapted Agile methodology.</li>
+                <li>Action: Used sprints, established deadlines, used WhatsApp for communication.</li>
+            </ul>
+            <p><strong>Metrics:</strong></p>
             <ul>
-                <li>Emphasize adaptability in tool selection</li>
-                <li>Highlight Agile methodology adaptation</li>
-                <li>Mention specific tools: Trello, WhatsApp</li>
-                <li>Focus on successful multi-project delivery</li>
+                <li>Streamlined workflows, fewer revision cycles, improved stakeholder engagement.</li>
+                <li>Delivered all major projects on time.</li>
             </ul>
         </div>
     
@@ -432,20 +458,16 @@
             <p>"Tell me about a time when you had to present a creative concept to a non-design team or stakeholder. How did you ensure they understood your vision?"</p>
             
             <h3>Full Response:</h3>
-            <p>"While creating landing pages for promotional campaigns, I often needed to present creative concepts to stakeholders with limited design background. Previously, static mockups and verbal explanations led to misunderstandings and multiple revision cycles.</p>
-            
-            <p>I changed our approach by developing quick interactive prototypes using the Relume Library. Instead of spending time on detailed static mockups, I created basic working prototypes that stakeholders could interact with. This allowed me to walk them through the design decisions in a tangible way.</p>
-            
-            <p>This approach significantly reduced revision cycles, accelerated the approval process, and improved stakeholder engagement. By making the design concepts interactive and tangible, we achieved better understanding and faster buy-in from non-design stakeholders."</p>
-        </div>
-    
-        <div class="bullet-points">
-            <h3>Key Points to Remember:</h3>
+            <p>"While creating landing pages for promotional campaigns, I often needed to present creative concepts to stakeholders with limited design background. Previously, static mockups and verbal explanations led to misunderstandings and multiple revision cycles."</p>
+            <p><strong>Key Points to Emphasize:</strong></p>
+            <ul class="key-points">
+                <li>Challenge: Communicating design concepts to non-design stakeholders.</li>
+                <li>Solution: Developed interactive prototypes using the Relume Library.</li>
+                <li>Action: Conducted early prototype reviews and hands-on demonstrations.</li>
+            </ul>
+            <p><strong>Metrics:</strong></p>
             <ul>
-                <li>Emphasize proactive problem-solving</li>
-                <li>Highlight the shift to interactive prototypes</li>
-                <li>Mention specific tools: Relume Library</li>
-                <li>Focus on improved stakeholder understanding</li>
+                <li>Reduced revision cycles, faster approvals, improved stakeholder buy-in.</li>
             </ul>
         </div>
     
@@ -454,23 +476,24 @@
         <div class="bullet-points">
             <h2>General Interview Tips</h2>
             <ul>
-                <li>Begin each answer with the specific challenge or situation</li>
-                <li>Use concrete examples and metrics where possible</li>
-                <li>Keep responses to 2-3 minutes</li>
-                <li>End each answer with measurable results</li>
-                <li>Be prepared to expand on any technical tools mentioned</li>
+                <li><strong>Be prepared to discuss the STAR method:</strong> Have examples ready for Situation, Task, Action, and Result.</li>
+                <li><strong>Focus on keywords:</strong> Emphasize brand consistency, user-friendly design, WordPress, Elementor, CRM integration, project management, stakeholder communication, interactive prototypes.</li>
+                <li><strong>Quantify your impact:</strong> Use metrics like "40% reduction," "increased leads," "faster approvals."</li>
+                <li><strong>Practice your responses:</strong> Make sure you can articulate your experiences clearly and concisely.</li>
+                <li><strong>Be enthusiastic:</strong> Show your passion for creative marketing and the opportunity at PSI Services.</li>
             </ul>
         </div>
+
         <div class="divider"></div>
 
         <h2>Interview Success Reminders</h2>
         <ul>
-            <li>Maintain a confident, positive tone</li>
-            <li>Use specific examples and metrics</li>
-            <li>Focus on problem-solving approach</li>
-            <li>Emphasize collaboration and adaptability</li>
-            <li>Connect responses to role requirements</li>
-            <li>Show enthusiasm for the opportunity</li>
+            <li>Maintain a confident, positive tone throughout the interview.</li>
+            <li>Use specific examples and metrics to support your claims.</li>
+            <li>Focus on your problem-solving approach and adaptability.</li>
+            <li>Emphasize your collaboration and communication skills.</li>
+            <li>Connect your responses to the specific requirements of the Creative Marketing Specialist role at PSI Services.</li>
+            <li>Show genuine enthusiasm for the opportunity and the company.</li>
         </ul>
     </div>
 
@@ -498,10 +521,32 @@
                 var panel = this.nextElementSibling;
                 if (panel.style.display === "block") {
                     panel.style.display = "none";
+                    panel.style.maxHeight = null;
                 } else {
                     panel.style.display = "block";
+                    panel.style.maxHeight = panel.scrollHeight + "px";
                 }
             });
+        }
+         // Add Expand All/Collapse All functionality
+        function expandAll(tabId) {
+          const accordions = document.querySelectorAll(`#${tabId} .accordion`);
+          accordions.forEach(accordion => {
+            accordion.classList.add('active');
+            const panel = accordion.nextElementSibling;
+            panel.style.display = 'block';
+            panel.style.maxHeight = panel.scrollHeight + 'px'; // Set to actual height
+          });
+        }
+
+        function collapseAll(tabId) {
+          const accordions = document.querySelectorAll(`#${tabId} .accordion`);
+          accordions.forEach(accordion => {
+            accordion.classList.remove('active');
+            const panel = accordion.nextElementSibling;
+            panel.style.display = 'none';
+            panel.style.maxHeight = null;
+          });
         }
     </script>
 
