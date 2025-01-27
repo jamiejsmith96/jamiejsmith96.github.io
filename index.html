@@ -1,12 +1,73 @@
-import React from 'react';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardContent } from "@/components/ui/card";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interview Prep</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/babel-standalone/babel.min.js"></script>
+  <script type="text/babel">
+ <script type="text/babel">
+  const { useState } = React;
+
+  const AccordionItem = ({ title, children }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    return (
+      <div className="accordion-item">
+        <h2 className="accordion-header">
+          <button className="accordion-button" type="button" onClick={() => setIsOpen(!isOpen)}>
+            {title}
+          </button>
+        </h2>
+        <div className={`accordion-collapse collapse ${isOpen ? 'show' : ''}`}>
+          <div className="accordion-body">
+            {children}
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const InterviewPrep = () => {
+    return (
+      <div className="container mt-5">
+        <ul className="nav nav-tabs" id="myTab" role="tablist">
+          <li className="nav-item" role="presentation">
+            <button className="nav-link active" id="prep-tab" data-bs-toggle="tab" data-bs-target="#prep" type="button" role="tab">Preparation</button>
+          </li>
+          <li className="nav-item" role="presentation">
+            <button className="nav-link" id="during-tab" data-bs-toggle="tab" data-bs-target="#during" type="button" role="tab">During Interview</button>
+          </li>
+        </ul>
+        <div className="tab-content" id="myTabContent">
+          <div className="tab-pane fade show active" id="prep" role="tabpanel">
+            <div className="accordion" id="prepAccordion">
+              <AccordionItem title="Key Strengths">
+                <p>Brand consistency and template development...</p>
+              </AccordionItem>
+              {/* Add more AccordionItems as needed */}
+            </div>
+          </div>
+          <div className="tab-pane fade" id="during" role="tabpanel">
+            {/* Content for during the interview */}
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  ReactDOM.render(<InterviewPrep />, document.getElementById('root'));
+</script>
+
+  </script>
+</body>
+</html>
+
 
 const InterviewPrep = () => {
   return (
@@ -164,5 +225,7 @@ const InterviewPrep = () => {
     </div>
   );
 };
-
-export default InterviewPrep;
+ReactDOM.render(<InterviewPrep />, document.getElementById('root'));
+</script>
+</body>
+</html>
