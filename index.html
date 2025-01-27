@@ -1,203 +1,471 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interview Prep</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Interview Prep Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+
+        h2 {
+            margin-top: 25px;
+        }
+
+        .overview {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        
+        .response-block {
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 4px solid #3498db;
+        }
+
+        .bullet-points {
+            background-color: #fff8dc;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .key-points {
+            font-weight: bold;
+            color: #2980b9;
+        }
+
+        .divider {
+            border-top: 1px solid #eee;
+            margin: 20px 0;
+        }
+
+        /* Tabs */
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+
+        /* Accordion */
+        .accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+            margin-bottom: 5px;
+        }
+
+        .active, .accordion:hover {
+            background-color: #ccc;
+        }
+
+        .panel {
+            padding: 0 18px;
+            display: none;
+            background-color: white;
+            overflow: hidden;
+        }
+
+        .accordion:after {
+            content: '\002B'; /* Unicode character for "plus" sign (+) */
+            font-size: 13px;
+            color: #777;
+            float: right;
+            margin-left: 5px;
+        }
+
+        .active:after {
+            content: "\2212"; /* Unicode character for "minus" sign (-) */
+        }
+        .star-block {
+            background-color: #f7fbff;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 15px 0;
+        }
+        .key-message {
+            font-style: italic;
+            color: #2c3e50;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #ecf0f1;
+            border-radius: 4px;
+        }
+        .result {
+            color: #27ae60;
+            margin-left: 20px;
+        }
+        .checklist {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        .checklist li:before {
+            content: "□ ";
+            margin-right: 5px;
+        }
+        .tips {
+            background-color: #fff8dc;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+    </style>
 </head>
 <body>
-  <div id="root"></div>
 
-  <script src="https://unpkg.com/react/umd/react.production.min.js"></script>
-  <script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"></script>
-  <script src="https://unpkg.com/babel-standalone/babel.min.js"></script>
-  
-  <script type="text/babel">
-    const { useState } = React;
+<h1>Interview Prep Guide</h1>
 
-    // Accordion Item Component
-    const AccordionItem = ({ title, children }) => {
-      const [isOpen, setIsOpen] = useState(false);
-      return (
-        <div className="border-b">
-          <h2 className="text-xl">
-            <button
-              className="w-full text-left p-4"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              {title}
-            </button>
-          </h2>
-          {isOpen && <div className="p-4">{children}</div>}
+<div class="tab">
+    <button class="tablinks active" onclick="openTab(event, 'Prep')">Preparation</button>
+    <button class="tablinks" onclick="openTab(event, 'During')">During Interview</button>
+</div>
+
+<div id="Prep" class="tabcontent" style="display:block;">
+    <div class="overview">
+        <h2>Interview Overview</h2>
+        <p><strong>Candidate:</strong> Jamie Smith<br>
+        <strong>Company:</strong> PSI Services<br>
+        <strong>Role:</strong> Creative Marketing Specialist<br>
+        <strong>Interview Type:</strong> Behavioral/Experience-Based</p>
+    </div>
+
+    <button class="accordion">Graphic Design & Branding Excellence</button>
+    <div class="panel">
+        <p class="key-message">Key Message: Empowering teams through accessible design systems</p>
+        
+        <div class="star-block">
+            <p><strong>Situation:</strong></p>
+            <ul>
+                <li>Sales team struggled with brand consistency</li>
+                <li>Lack of design expertise led to inconsistent materials</li>
+                <li>Professional image affected by varying quality</li>
+            </ul>
+
+            <p><strong>Task:</strong></p>
+            <ul>
+                <li>Create user-friendly design system</li>
+                <li>Maintain brand standards</li>
+                <li>Enable non-designers to produce materials</li>
+            </ul>
+
+            <p><strong>Action:</strong></p>
+            <ul>
+                <li>Developed overlay templates for Canva/PowerPoint</li>
+                <li>Created comprehensive brand element guidelines</li>
+                <li>Implemented team training program</li>
+            </ul>
+
+            <p><strong>Results:</strong></p>
+            <ul class="results">
+                <li class="result">Brand consistency achieved across materials</li>
+                <li class="result">40% reduction in design team workload</li>
+                <li class="result">Empowered sales team to create professional content</li>
+            </ul>
         </div>
-      );
-    };
+    </div>
 
-    // InterviewPrep Component (Tabs and Sections)
-    const InterviewPrep = () => {
-      const [activeTab, setActiveTab] = useState('prep');  // Default tab
+    <button class="accordion">Web Content & UX Management</button>
+    <div class="panel">
+        <p class="key-message">Key Message: Strategic transformation with limited resources</p>
+        
+        <div class="star-block">
+            <p><strong>Situation:</strong></p>
+            <ul>
+                <li>Multiple fragmented websites</li>
+                <li>Poor UX and slow performance</li>
+                <li>Weak lead generation</li>
+            </ul>
 
-      return (
-        <div className="max-w-4xl mx-auto p-6">
-          <h1 className="text-3xl font-bold mb-6 text-blue-800">Creative Marketing Specialist – Interview Guide</h1>
-          
-          {/* Tab Buttons */}
-          <div className="tabs mb-4">
-            <button
-              className={`tab-button ${activeTab === 'prep' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
-              onClick={() => setActiveTab('prep')}
-            >
-              Interview Preparation
-            </button>
-            <button
-              className={`tab-button ${activeTab === 'response-guide' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
-              onClick={() => setActiveTab('response-guide')}
-            >
-              Interview Response Guide
-            </button>
-          </div>
+            <p><strong>Task:</strong></p>
+            <ul>
+                <li>Unify web presence</li>
+                <li>Improve UX/performance</li>
+                <li>Enhance lead generation</li>
+                <li>Work within budget constraints</li>
+            </ul>
 
-          {/* Tab Content */}
-          <div className="tab-content">
-            {/* Interview Preparation Section */}
-            {activeTab === 'prep' && (
-              <div className="tab-pane">
-                <div className="bg-gray-50 p-4 rounded-lg mb-6">
-                  <h2 className="text-xl font-semibold mb-2">Interview Overview</h2>
-                  <p><strong>Candidate:</strong> Jamie Smith<br />
-                  <strong>Company:</strong> PSI Services<br />
-                  <strong>Role:</strong> Creative Marketing Specialist<br />
-                  <strong>Interview Type:</strong> Behavioral/Experience-Based</p>
-                </div>
+            <p><strong>Action:</strong></p>
+            <ul>
+                <li>Implemented Elementor/WordPress solution</li>
+                <li>Customized CRM integration</li>
+                <li>Created user-friendly listing management</li>
+                <li>Developed integrated booking system</li>
+                <li>Consolidated web presence</li>
+                <li>Optimized performance metrics</li>
+            </ul>
 
-                <h2 className="text-xl font-semibold mb-4">Quick Reference Summary</h2>
-                <ul className="list-disc pl-6 mb-6">
-                  <li>Brand consistency and template development</li>
-                  <li>Cost-effective web solutions and UX improvements</li>
-                  <li>Agile project management adaptation</li>
-                  <li>Stakeholder communication and prototype development</li>
-                </ul>
-
-                <div className="accordion">
-                  <AccordionItem title="Preparation Checklist">
-                    <ul className="list-disc pl-6 space-y-2">
-                      <li>Review each STAR response thoroughly</li>
-                      <li>Practice delivering responses within 2-3 minutes</li>
-                      <li>Prepare specific metrics and numbers for impact</li>
-                      <li>Have additional examples ready for follow-up questions</li>
-                    </ul>
-                  </AccordionItem>
-
-                  <AccordionItem title="Key Competencies to Highlight">
-                    <ul className="list-disc pl-6 space-y-2">
-                      <li>Strategic thinking</li>
-                      <li>Resource optimization</li>
-                      <li>Team empowerment</li>
-                      <li>Stakeholder management</li>
-                      <li>Technical adaptability</li>
-                      <li>Results-driven approach</li>
-                    </ul>
-                  </AccordionItem>
-
-                  <AccordionItem title="Follow-up Questions to Prepare For">
-                    <ul className="list-disc pl-6 space-y-2">
-                      <li>How do you handle conflicting stakeholder feedback?</li>
-                      <li>What's your approach to tight budget constraints?</li>
-                      <li>How do you prioritize competing deadlines?</li>
-                      <li>What's your process for evaluating design effectiveness?</li>
-                    </ul>
-                  </AccordionItem>
-
-                  <AccordionItem title="Interview Success Reminders">
-                    <ul className="list-disc pl-6 space-y-2">
-                      <li>Maintain a confident, positive tone</li>
-                      <li>Use specific examples and metrics</li>
-                      <li>Focus on problem-solving approach</li>
-                      <li>Emphasize collaboration and adaptability</li>
-                      <li>Connect responses to role requirements</li>
-                      <li>Show enthusiasm for the opportunity</li>
-                    </ul>
-                  </AccordionItem>
-                </div>
-              </div>
-            )}
-
-            {/* Interview Response Guide Section */}
-            {activeTab === 'response-guide' && (
-              <div className="tab-pane">
-                <div className="accordion">
-                  <AccordionItem title="Brand Guidelines & Creativity">
-                    <div className="space-y-4">
-                      <h3 className="font-semibold mb-2">Full Response:</h3>
-                      <p>"At Cosgrove Leisure, I noticed our sales team was struggling with creating consistent marketing materials due to limited design expertise. This was affecting our brand's professional image. I took the initiative to develop a solution that would maintain our brand standards while enabling creativity."</p>
-                      <p>"I designed a set of overlay templates compatible with accessible tools like Canva and PowerPoint, moving away from the requirement for Adobe Creative Suite. These templates incorporated our defined brand elements - colors, fonts, and layouts - while providing enough flexibility for creative expression. I also conducted hands-on training sessions to ensure the team could effectively use these resources."</p>
-                      <p>"As a result, we saw immediate improvements in brand consistency across all materials, reduced the design team's workload by 40%, and empowered our sales team to create professional content independently. This solution not only maintained our brand integrity but also improved our overall efficiency."</p>
-                      <h4 className="font-semibold">Key Points to Remember:</h4>
-                      <ul className="list-disc pl-6 space-y-2">
-                        <li>Emphasize problem identification: inconsistent branding</li>
-                        <li>Highlight solution: user-friendly templates</li>
-                        <li>Mention specific tools: Canva, PowerPoint</li>
-                        <li>Quote the 40% workload reduction statistic</li>
-                      </ul>
-                    </div>
-                  </AccordionItem>
-
-                  <AccordionItem title="Website Redesign">
-                    <div className="space-y-4">
-                      <h3 className="font-semibold mb-2">Full Response:</h3>
-                      <p>"When I joined Cosgrove Leisure, we faced significant challenges with our web presence. We had multiple outdated websites with poor user experience, slow load times, and ineffective lead generation. Working with limited budget, I needed to create a solution that would improve our digital presence while being cost-effective."</p>
-                      <p>"I implemented a WordPress solution using Elementor and the Houzez theme, which we customized for our holiday park sales. I integrated this with our CRM system and created a user-friendly listing management system that our non-technical staff could easily update. We also added a booking system and consolidated all our parks under one central website."</p>
-                      <p>"These changes led to significant improvements in our search rankings, increased lead generation, and ultimately drove sales growth. We achieved a more professional online presence that put us on par with larger competitors, despite our budget constraints."</p>
-                      <h4 className="font-semibold">Key Points to Remember:</h4>
-                      <ul className="list-disc pl-6 space-y-2">
-                        <li>Focus on the budget constraint challenge</li>
-                        <li>Mention specific technologies: WordPress, Elementor</li>
-                        <li>Emphasize user-friendly solutions for staff</li>
-                        <li>Highlight measurable improvements in rankings and leads</li>
-                      </ul>
-                    </div>
-                  </AccordionItem>
-
-                  <AccordionItem title="Project Management">
-                    <div className="space-y-4">
-                      <h3 className="font-semibold mb-2">Full Response:</h3>
-                      <p>"At Cosgrove Leisure, I was managing multiple concurrent digital projects including a website redesign, branding updates, and marketing collateral creation. The challenge was amplified by minimal existing digital infrastructure and communication systems."</p>
-                      <p>"I implemented Trello for visual project management and adopted an Agile-inspired approach, breaking projects into sprints with both soft and hard deadlines. Recognizing our team's preferences, I used WhatsApp as our primary communication tool, which proved more effective than traditional project management platforms."</p>
-                      <p>"This approach resulted in improved efficiency, fewer revision cycles, and better stakeholder engagement. We successfully delivered all major projects on time, including the website revamp, marketing materials, and branding updates."</p>
-                      <h4 className="font-semibold">Key Points to Remember:</h4>
-                      <ul className="list-disc pl-6 space-y-2">
-                        <li>Emphasize adaptability in tool selection</li>
-                        <li>Highlight Agile methodology adaptation</li>
-                        <li>Mention specific tools: Trello, WhatsApp</li>
-                        <li>Focus on successful multi-project delivery</li>
-                      </ul>
-                    </div>
-                  </AccordionItem>
-
-                  <AccordionItem title="Stakeholder Communication">
-                    <div className="space-y-4">
-                      <h3 className="font-semibold mb-2">Full Response:</h3>
-                      <p>"While creating landing pages for promotional campaigns, I often needed to present creative concepts to stakeholders with limited design background. Previously, static mockups and verbal explanations led to misunderstandings and multiple revision cycles."</p>
-                      <p>"I changed our approach by developing quick interactive prototypes using the Relume Library. Instead of spending time on detailed static mockups, I created basic working prototypes that stakeholders could interact with. This allowed me to walk them through the design decisions in a tangible way."</p>
-                      <p>"This approach significantly reduced revision cycles, accelerated the approval process, and improved stakeholder engagement. By making the design concepts interactive and tangible, we achieved better understanding and faster buy-in from non-design stakeholders."</p>
-                      <h4 className="font-semibold">Key Points to Remember:</h4>
-                      <ul className="list-disc pl-6 space-y-2">
-                        <li>Focus on improving stakeholder communication</li>
-                        <li>Mention interactive prototypes and Relume Library</li>
-                        <li>Highlight the time-saving impact of this approach</li>
-                      </ul>
-                    </div>
-                  </AccordionItem>
-                </div>
-              </div>
-            )}
-          </div>
+            <p><strong>Results:</strong></p>
+            <ul>
+                <li class="result">Improved SERP rankings</li>
+                <li class="result">Increased lead generation</li>
+                <li class="result">Enhanced sales conversion</li>
+                <li class="result">Stronger market positioning</li>
+            </ul>
         </div>
-      );
-    };
+    </div>
 
-    ReactDOM.render(<InterviewPrep />, document.getElementById('root'));
-  </script>
-</body>
-</html>
+    <button class="accordion">Project Management Excellence</button>
+    <div class="panel">
+        <p class="key-message">Key Message: Adaptive project management for maximum efficiency</p>
+
+        <div class="star-block">
+            <p><strong>Situation:</strong></p>
+            <ul>
+                <li>Multiple concurrent projects</li>
+                <li>Minimal digital infrastructure</li>
+                <li>Communication challenges</li>
+            </ul>
+
+            <p><strong>Task:</strong></p>
+            <ul>
+                <li>Coordinate multiple projects</li>
+                <li>Maintain stakeholder alignment</li>
+                <li>Meet strict deadlines</li>
+            </ul>
+
+            <p><strong>Action:</strong></p>
+            <ul>
+                <li>Implemented Trello for visual management</li>
+                <li>Adapted Agile methodology</li>
+                <li>Utilized WhatsApp for stakeholder communication</li>
+                <li>Established milestone review system</li>
+            </ul>
+
+            <p><strong>Results:</strong></p>
+            <ul>
+                <li class="result">Streamlined project workflows</li>
+                <li class="result">Reduced revision cycles</li>
+                <li class="result">Improved stakeholder engagement</li>
+                <li class="result">On-time project delivery</li>
+            </ul>
+        </div>
+    </div>
+
+    <button class="accordion">Stakeholder Communication</button>
+    <div class="panel">
+        <p class="key-message">Key Message: Making design tangible through interactive prototyping</p>
+
+        <div class="star-block">
+            <p><strong>Situation:</strong></p>
+            <ul>
+                <li>Communication gaps with non-designers</li>
+                <li>Misunderstandings from static mockups</li>
+                <li>Inefficient revision cycles</li>
+            </ul>
+
+            <p><strong>Task:</strong></p>
+            <ul>
+                <li>Improve concept visualization</li>
+                <li>Streamline feedback process</li>
+                <li>Reduce development waste</li>
+            </ul>
+
+            <p><strong>Action:</strong></p>
+            <ul>
+                <li>Created interactive prototypes</li>
+                <li>Implemented early prototype reviews</li>
+                <li>Facilitated hands-on demonstrations</li>
+            </ul>
+
+            <p><strong>Results:</strong></p>
+            <ul>
+                <li class="result">Faster revision cycles</li>
+                <li class="result">Accelerated approval process</li>
+                <li class="result">Enhanced stakeholder buy-in</li>
+            </ul>
+        </div>
+    </div>
+    <div class="divider"></div>
+
+    <h2>Interview Strategy Tips</h2>
+    
+    <div class="tips">
+        <h3>Preparation Checklist</h3>
+        <ul class="checklist">
+            <li>Review each STAR response thoroughly</li>
+            <li>Practice delivering responses within 2-3 minutes</li>
+            <li>Prepare specific metrics and numbers for impact</li>
+            <li>Have additional examples ready for follow-up questions</li>
+        </ul>
+
+        <h3>Response Framework</h3>
+        <ol>
+            <li>Start with the broader context</li>
+            <li>Focus on specific actions taken</li>
+            <li>Emphasize measurable results</li>
+            <li>Connect outcomes to business impact</li>
+        </ol>
+
+        <h3>Key Competencies to Highlight</h3>
+        <ul>
+            <li>Strategic thinking</li>
+            <li>Resource optimization</li>
+            <li>Team empowerment</li>
+            <li>Stakeholder management</li>
+            <li>Technical adaptability</li>
+            <li>Results-driven approach</li>
+        </ul>
+
+        <h3>Follow-up Questions to Prepare For</h3>
+        <ul>
+            <li>How do you handle conflicting stakeholder feedback?</li>
+            <li>What's your approach to tight budget constraints?</li>
+            <li>How do you prioritize competing deadlines?</li>
+            <li>What's your process for evaluating design effectiveness?</li>
+        </ul>
+    </div>
+</div>
+
+<div id="During" class="tabcontent">
+    <div class="response-block">
+        <h2>Question 1: Brand Guidelines & Creativity</h2>
+        <p>"Tell me about a time you had to create marketing collateral for a brand with strict guidelines. How did you ensure consistency while also bringing creativity to the project?"</p>
+        
+        <h3>Full Response:</h3>
+        <p>"At Cosgrove Leisure, I noticed our sales team was struggling with creating consistent marketing materials due to limited design expertise. This was affecting our brand's professional image. I took the initiative to develop a solution that would maintain our brand standards while enabling creativity.</p>
+        
+        <p>I designed a set of overlay templates compatible with accessible tools like Canva and PowerPoint, moving away from the requirement for Adobe Creative Suite. These templates incorporated our defined brand elements - colors, fonts, and layouts - while providing enough flexibility for creative expression. I also conducted hands-on training sessions to ensure the team could effectively use these resources.</p>
+        
+        <p>As a result, we saw immediate improvements in brand consistency across all materials, reduced the design team's workload by 40%, and empowered our sales team to create professional content independently. This solution not only maintained our brand integrity but also improved our overall efficiency."</p>
+    </div>
+
+    <div class="bullet-points">
+        <h3>Key Points to Remember:</h3>
+        <ul>
+            <li>Emphasize problem identification: inconsistent branding</li>
+            <li>Highlight solution: user-friendly templates</li>
+            <li>Mention specific tools: Canva, PowerPoint</li>
+            <li>Quote the 40% workload reduction statistic</li>
+        </ul>
+    </div>
+
+    <div class="response-block">
+        <h2>Question 2: Website Redesign</h2>
+        <p>"Describe a situation where you had to update or redesign website content to improve user experience. How did you determine what changes were needed, and what was the impact?"</p>
+        
+        <h3>Full Response:</h3>
+        <p>"When I joined Cosgrove Leisure, we faced significant challenges with our web presence. We had multiple outdated websites with poor user experience, slow load times, and ineffective lead generation. Working with limited budget, I needed to create a solution that would improve our digital presence while being cost-effective.</p>
+        
+        <p>I implemented a WordPress solution using Elementor and the Houzez theme, which we customized for our holiday park sales. I integrated this with our CRM system and created a user-friendly listing management system that our non-technical staff could easily update. We also added a booking system and consolidated all our parks under one central website.</p>
+        
+        <p>These changes led to significant improvements in our search rankings, increased lead generation, and ultimately drove sales growth. We achieved a more professional online presence that put us on par with larger competitors, despite our budget constraints."</p>
+    </div>
+
+    <div class="bullet-points">
+        <h3>Key Points to Remember:</h3>
+        <ul>
+            <li>Focus on the budget constraint challenge</li>
+            <li>Mention specific technologies: WordPress, Elementor</li>
+            <li>Emphasize user-friendly solutions for staff</li>
+            <li>Highlight measurable improvements in rankings and leads</li>
+        </ul>
+    </div>
+
+    <div class="response-block">
+        <h2>Question 3: Project Management</h2>
+        <p>"Give an example of a time you managed multiple design projects with tight deadlines. How did you prioritize tasks and ensure timely delivery?"</p>
+        
+        <h3>Full Response:</h3>
+        <p>"At Cosgrove Leisure, I was managing multiple concurrent digital projects including a website redesign, branding updates, and marketing collateral creation. The challenge was amplified by minimal existing digital infrastructure and communication systems.</p>
+        
+        <p>I implemented Trello for visual project management and adopted an Agile-inspired approach, breaking projects into sprints with both soft and hard deadlines. Recognizing our team's preferences, I used WhatsApp as our primary communication tool, which proved more effective than traditional project management platforms.</p>
+        
+        <p>This approach resulted in improved efficiency, fewer revision cycles, and better stakeholder engagement. We successfully delivered all major projects on time, including the website revamp, marketing materials, and branding updates."</p>
+    </div>
+
+    <div class="bullet-points">
+        <h3>Key Points to Remember:</h3>
+        <ul>
+            <li>Emphasize adaptability in tool selection</li>
+            <li>Highlight Agile methodology adaptation</li>
+            <li>Mention specific tools: Trello, WhatsApp</li>
+            <li>Focus on successful multi-project delivery</li>
+        </ul>
+    </div>
+
+    <div class="response-block">
+        <h2>Question 4: Stakeholder Communication</h2>
+        <p>"Tell me about a time when you had to present a creative concept to a non-design team or stakeholder. How did you ensure they understood your vision?"</p>
+        
+        <h3>Full Response:</h3>
+        <p>"While creating landing pages for promotional campaigns, I often needed to present creative concepts to stakeholders with limited design background. Previously, static mockups and verbal explanations led to misunderstandings and multiple revision cycles.</p>
+        
+        <p>I changed our approach by developing quick interactive prototypes using the Relume Library. Instead of spending time on detailed static mockups, I created basic working prototypes that stakeholders could interact with. This allowed me to walk them through the design decisions in a tangible way.</p>
+        
+        <p>This approach significantly reduced revision cycles, accelerated the approval process, and improved stakeholder engagement. By making the design concepts interactive and tangible, we achieved better understanding and faster buy-in from non-design stakeholders."</p>
+    </div>
+
+    <div class="bullet-points">
+        <h3>Key Points to Remember:</h3>
+        <ul>
+            <li>Emphasize proactive problem-solving</li>
+            <li>Highlight the shift to interactive prototypes</li>
+            <li>Mention specific tools: Relume Library</li>
+            <li>Focus on improved stakeholder understanding</li>
+        </ul>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="bullet-points">
+        <h2>General Interview Tips</h2>
+        <ul>
+            <li>Begin each answer with the specific challenge or situation</li>
+            <li>Use concrete examples and metrics where possible</li>
+            <li>Keep responses to 2-3 minutes</li>
+            <li>End each answer with measurable results</li>
+            <li>Be prepared to expand on any technical tools mentioned</li>
+        </ul>
+    </div>
+    <div class="divider"></div>
+
+    <h2>Interview Success Reminders</h2>
+    <ul>
+        <li>Maintain a confident, positive tone</li>
+        <li>Use specific examples and metrics</li>
+        <li>Focus on problem-solving approach</li>
+        <li>Emphasize collaboration and adaptability</li>
