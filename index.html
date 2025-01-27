@@ -1,43 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interview Prep Guide</title>
     <style>
         :root {
-            --primary-color: #0a4d9e; /* Bold blue */
-            --secondary-color: #f0f4f8; /* Light blue-gray */
-            --accent-color: #ff7f50; /* Coral accent */
-            --text-color: #333;
-            --heading-color: #1f2937; /* Dark gray */
-            --border-radius: 10px;
+            --primary-color: #0077cc; /* Professional Blue */
+            --secondary-color: #f2f2f2; /* Light Gray */
+            --accent-color: #ff9900; /* Warm Orange */
+            --success-color: #00aa55; /* Green */
+            --text-color: #222;
+            --heading-color: #004466; /* Darker Blue */
+            --border-radius: 5px;
             --spacing: 15px;
+            --font-family: 'Arial', sans-serif;
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: var(--font-family);
             line-height: 1.6;
             color: var(--text-color);
             max-width: 850px;
             margin: 0 auto;
-            padding: var(--spacing);
-            background-color: #f8f9fa;
+            padding: calc(var(--spacing) * 2);
+            background-color: #fff;
         }
 
-        /* Headings */
-        h1 { font-size: 2.5em; font-weight: 700; color: var(--primary-color); margin-bottom: var(--spacing); }
-        h2 { font-size: 1.8em; font-weight: 600; margin-top: 25px; color: var(--heading-color); }
-        h3 { font-size: 1.3em; font-weight: 600; color: var(--heading-color); }
+        h1, h2, h3 {
+            font-weight: 700;
+        }
 
-        /* Sections */
-        .overview, .response-block, .bullet-points, .tips {
-            background-color: white;
-            padding: calc(var(--spacing) * 1.5);
+        h1 { 
+            font-size: 2.5em; 
+            color: var(--primary-color); 
+            margin-bottom: var(--spacing); 
+            text-align: center; 
+        }
+
+        h2 { 
+            font-size: 1.6em; 
+            margin-top: var(--spacing); 
+            color: var(--heading-color); 
+        }
+
+        h3 { 
+            font-size: 1.2em; 
+            color: var(--heading-color); 
+        }
+
+        .section {
+            background-color: var(--secondary-color);
+            padding: var(--spacing);
             border-radius: var(--border-radius);
             margin-bottom: var(--spacing);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        /* Key Points */
+        .overview p {
+            margin: 5px 0;
+        }
+
         .key-points {
             font-weight: 700;
             color: var(--primary-color);
@@ -46,70 +69,65 @@
         .key-message {
             font-style: italic;
             color: var(--text-color);
-            margin: 10px 0;
             padding: 10px;
-            background-color: var(--secondary-color);
+            background-color: #f8f8f8;
             border-left: 4px solid var(--primary-color);
             border-radius: var(--border-radius);
         }
 
         .result {
-            color: var(--accent-color);
-            margin-left: var(--spacing);
+            color: var(--success-color);
+            font-weight: 600;
         }
 
-        /* Divider */
         .divider {
-            border-top: 2px solid var(--secondary-color);
-            margin: 20px 0;
+            border-top: 2px solid #ddd;
+            margin: var(--spacing) 0;
         }
 
-        /* Tabs */
         .tab {
             overflow: hidden;
-            border: none;
-            background-color: var(--secondary-color);
+            display: flex;
+            background-color: #fff;
             border-radius: var(--border-radius);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             margin-bottom: var(--spacing);
         }
 
         .tab button {
+            flex: 1;
             background-color: inherit;
-            float: left;
             border: none;
             outline: none;
             cursor: pointer;
-            padding: 14px 16px;
+            padding: 12px 15px;
             transition: 0.3s;
-            font-size: 1.1em;
+            font-size: 1em;
             font-weight: 600;
             color: var(--text-color);
-            border-radius: var(--border-radius) var(--border-radius) 0 0;
+            border-radius: var(--border-radius);
         }
 
         .tab button:hover {
-            background-color: rgba(0, 0, 0, 0.05);
+            background-color: rgba(0, 119, 204, 0.1);
         }
 
         .tab button.active {
-            background-color: white;
-            color: var(--primary-color);
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+            background-color: var(--primary-color);
+            color: #fff;
         }
 
         .tabcontent {
             display: none;
             padding: var(--spacing);
             border: none;
-            border-radius: 0 0 var(--border-radius) var(--border-radius);
         }
 
-        /* Accordion */
         .accordion {
-            background-color: white;
-            color: var(--heading-color);
+            background-color: var(--primary-color);
+            color: #fff;
             cursor: pointer;
-            padding: 18px;
+            padding: 15px;
             width: 100%;
             border: none;
             text-align: left;
@@ -122,45 +140,34 @@
         }
 
         .accordion:hover {
-            background-color: var(--secondary-color);
+            background-color: #0056b3;
         }
 
         .panel {
-            padding: 0 18px;
+            padding: 0 var(--spacing);
+            background-color: var(--secondary-color);
             display: none;
-            background-color: white;
             overflow: hidden;
-            border-radius: 0 0 var(--border-radius) var(--border-radius);
+            border-radius: var(--border-radius);
             transition: max-height 0.3s ease-out, padding 0.3s ease-out;
             max-height: 0;
         }
 
         .accordion.active + .panel {
             max-height: 500px; /* Adjust as needed */
-            padding: 10px 18px;
+            padding: 10px var(--spacing);
         }
 
         .accordion:after {
             content: '+';
             font-size: 1.2em;
-            color: var(--primary-color);
             float: right;
-            margin-left: 5px;
         }
 
         .active:after {
-            content: "-";
+            content: '-';
         }
 
-        .star-block {
-            background-color: var(--secondary-color);
-            padding: var(--spacing);
-            border-left: 4px solid var(--primary-color);
-            margin: var(--spacing) 0;
-            border-radius: var(--border-radius);
-        }
-
-        /* Lists */
         ul, ol {
             margin-bottom: var(--spacing);
         }
@@ -172,33 +179,54 @@
 
         .checklist li:before {
             content: "✓ ";
-            color: var(--accent-color);
+            color: var(--success-color);
             font-weight: 700;
             margin-right: 10px;
         }
 
-        /* Buttons */
         .expand-collapse-container {
-            margin-bottom: var(--spacing);
-            margin-top: var(--spacing);
             text-align: center;
+            margin-bottom: var(--spacing);
         }
 
         button {
-            background-color: var(--primary-color);
-            color: white;
+            background-color: var(--accent-color);
+            color: #fff;
             border: none;
-            padding: 10px 20px;
+            padding: 10px 18px;
             text-transform: uppercase;
             font-weight: 600;
             border-radius: var(--border-radius);
             cursor: pointer;
             transition: all 0.3s ease;
             margin: 0 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         button:hover {
-            background-color: #073c82; /* Darker shade of blue on hover */
+            background-color: #e68a00;
+        }
+
+        .response-block {
+            background-color: var(--secondary-color);
+            padding: var(--spacing);
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .response-block h2 {
+            margin-top: 0;
+        }
+        .response-block p {
+            margin: 5px 0;
+        }
+        .key-points {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing);
+        }
+        .key-points li {
+            margin-bottom: 5px;
         }
 
         /* Print Styles */
@@ -229,319 +257,305 @@
 
         <div class="overview">
             <h2>Interview Overview</h2>
-            <p><strong>Candidate:</strong> Jamie Smith<br>
-            <strong>Company:</strong> PSI Services<br>
-            <strong>Role:</strong> Creative Marketing Specialist<br>
-            <strong>Interview Type:</strong> Behavioral/Experience-Based</p>
+            <p><strong>Candidate:</strong> Jamie Smith</p>
+            <p><strong>Interviewer:</strong> Megan Gaffney</p>
+            <p><strong>Role:</strong> Global Website Manager</p>
+            <p><strong>Company:</strong> PSI Services</p>
+            <p><strong>Interview Type:</strong> Behavioral/Experience-Based</p>
         </div>
 
         <button class="accordion">Company Research</button>
-        <div class="panel">
-            <h3>Key Areas to Research:</h3>
+<div class="panel">
+    <h3>Key Areas to Research:</h3>
+    <ul>
+        <li><strong>PSI Services Website:</strong> Thoroughly review their website, paying attention to design, content, and functionality. Note their emphasis on technology, innovation, and global reach. The website is modern, uses a clean design with a blue/white color scheme, and is easy to navigate. Key sections include "About Us," "Services," "Clients," and "News/Blog."</li>
+        <li><strong>Recent News:</strong> PSI is heavily focused on technology-driven assessment solutions (remote proctoring, online testing), global expansion (new offices in the UK and India), and strategic partnerships. They also recently acquired Cubiks, a talent assessment company, further strengthening their offerings. Look for further information about new products, partnerships, awards, or leadership changes.</li>
+        <li><strong>Company Values:</strong> PSI emphasizes innovation, integrity, client focus, and a commitment to excellence. These values are reflected in their website content and press releases. Consider how your values align with theirs.</li>
+        <li><strong>Competitors:</strong> Major competitors include Pearson VUE, Prometric, Korn Ferry, Mercer, and DDI. PSI differentiates itself through its strong focus on technology-driven assessments, particularly in remote proctoring. They have a broad global presence and a diverse client base. However, some competitors might have stronger brand recognition in specific industries or regions.</li>
+        <li><strong>Products/Services:</strong> PSI offers a wide range of services, including:
             <ul>
-                <li><strong>PSI Services Website:</strong> Thoroughly review their website, especially the "About Us," "Services," "Clients," and "News/Blog" sections.</li>
-                <li><strong>Recent News:</strong> Search for recent news articles about PSI Services on Google News or other reputable sources. Look for information about new products, partnerships, awards, or leadership changes.</li>
-                <li><strong>Company Values:</strong> Identify PSI's core values and mission statement. Consider how your values align with theirs.</li>
-                <li><strong>Competitors:</strong> Research PSI's main competitors in the assessment and talent management industry. Understand their strengths and weaknesses compared to PSI.</li>
-                <li><strong>Products/Services:</strong> Gain a deep understanding of PSI's specific products and services, especially those relevant to the Creative Marketing Specialist role.</li>
-                <li><strong>Clients:</strong> Research PSI's clients, particularly in industries you have experience with. This will help you tailor your examples.</li>
-                <li><strong>LinkedIn Page:</strong> Review PSI's LinkedIn page for company updates, employee profiles, and recent activity.</li>
+                <li><strong>Talent Assessment:</strong> Solutions for pre-hire assessments, employee selection, and leadership development.</li>
+                <li><strong>Licensure & Certification Testing:</strong> Comprehensive services for professional licensing and certification exams.</li>
+                <li><strong>Managed Services:</strong> Outsourced solutions for assessment program management.</li>
+                <li><strong>Technology Platforms:</strong> Online testing, remote proctoring, and assessment delivery platforms (e.g., PSI Bridge, PSI True Talent).</li>
             </ul>
-            <h3>Resources:</h3>
+        </li>
+        <li><strong>Clients:</strong> PSI serves a diverse range of clients across government, healthcare, finance, IT, and education. Their website features client testimonials and case studies, highlighting successful implementations.</li>
+        <li><strong>LinkedIn Page:</strong> Review PSI's LinkedIn page for company updates, employee profiles, and recent activity. Pay attention to posts related to website design, UX, and digital marketing. Note their engagement and the type of content they share.</li>
+    </ul>
+    <h3>Resources:</h3>
+    <ul>
+        <li>PSI Services Website: <a href="https://www.psionline.com/" target="_blank">https://www.psionline.com/</a></li>
+        <li>PSI Services LinkedIn Page: <a href="https://www.linkedin.com/company/psi-services-inc" target="_blank">https://www.linkedin.com/company/psi-services-inc</a></li>
+        <li>Google News (Search for "PSI Services"): <a href="https://www.google.com/search?q=PSI+Services&tbm=nws" target="_blank">https://www.google.com/search?q=PSI+Services&tbm=nws</a></li>
+        <li>Industry News Sites: Search for keywords like "assessment," "talent management," "certification," "remote proctoring" on relevant industry publications.</li>
+    </ul>
+</div>
+
+        <button class="accordion">Questions to Ask Megan</button>
+        <div class="panel">
+            <h3>Role-Specific Questions:</h3>
             <ul>
-                <li>PSI Services Website: [insert link]</li>
-                <li>PSI Services LinkedIn Page: [insert link]</li>
-                <li>Google News (Search for "PSI Services")</li>
-                <li>Industry News Sites (e.g., assessment, talent management, certification)</li>
+                <li>Can you describe how the Creative Marketing Specialist role interacts with the Global Website Manager on a daily basis?</li>
+                <li>What are the key performance indicators (KPIs) you use to measure the success of the website?</li>
+                <li>What are the biggest web-related challenges the Creative Marketing Specialist will face in this role?</li>
+                <li>What opportunities are there for this role to contribute to the evolution of PSI's website and overall digital strategy?</li>
+            </ul>
+            <h3>Team and Management Questions:</h3>
+            <ul>
+                <li>How would you describe your management style and the marketing team's culture?</li>
+                <li>What qualities do you value most in team members?</li>
+                <li>What are the team's current website and digital marketing priorities?</li>
+            </ul>
+            <h3>Company and Strategy Questions:</h3>
+            <ul>
+                <li>How does PSI's website contribute to its overall business objectives?</li>
+                <li>What are PSI's plans for enhancing its web presence in the coming years?</li>
+                <li>How does PSI measure the success of its online marketing efforts?</li>
             </ul>
         </div>
 
-        <button class="accordion">Interviewer Research</button>
-        <div class="panel">
-            <p>If you know the names of your interviewers, research them on LinkedIn to understand their professional background and experience at PSI. This can help you anticipate their perspective and tailor your responses accordingly.</p>
-            <h3>Tips for Interviewer Research:</h3>
-            <ul>
-                <li><strong>LinkedIn Profiles:</strong> Look for their current role, previous experience, education, skills, and any shared connections.</li>
-                <li><strong>Activity:</strong> Note any articles they've written, posts they've shared, or groups they're part of. This can give you insights into their interests and expertise.</li>
-                <li><strong>Common Ground:</strong> Identify any common ground you might have, such as shared connections, education, or previous employers.</li>
-            </ul>
-        </div>
-
-        <button class="accordion">Questions to Ask</button>
-        <div class="panel">
-            <h3>Questions About the Role:</h3>
-            <ul>
-                <li>Can you describe the day-to-day responsibilities of this role in more detail?</li>
-                <li>What are the key performance indicators (KPIs) for this role?</li>
-                <li>What are the biggest challenges facing the Creative Marketing Specialist in this role?</li>
-                <li>What opportunities are there for professional development and growth within this role?</li>
-                <li>What tools and technologies does the marketing team use? (e.g., Adobe Creative Suite, project management software, marketing automation platforms)</li>
-            </ul>
-            <h3>Questions About the Team:</h3>
-            <ul>
-                <li>Can you tell me more about the marketing team's structure and how this role fits within it?</li>
-                <li>How would you describe the team's culture and working style?</li>
-                <li>Who are the key stakeholders this role will collaborate with?</li>
-                <li>What are the team's current priorities and goals?</li>
-            </ul>
-            <h3>Questions About the Company:</h3>
-            <ul>
-                <li>How would you describe PSI's company culture?</li>
-                <li>What are PSI's plans for growth and expansion in the coming years?</li>
-                <li>How does PSI foster innovation and creativity within the marketing department?</li>
-                <li>What are some of PSI's proudest accomplishments or initiatives in the area of [relevant industry/area]?</li>
-            </ul>
-        </div>
-
-        <button class="accordion">Graphic Design & Branding Excellence</button>
+        <button class="accordion">STAR Examples: Graphic Design & Branding</button>
         <div class="panel">
             <p class="key-message">Key Message: Empowering teams through accessible design systems</p>
-            
             <div class="star-block">
-                <p><strong>Situation:</strong> At Cosgrove Leisure, the sales team struggled to create on-brand marketing materials due to limited design skills. This led to inconsistent branding and a less professional image.</p>
+                <p><strong>Situation:</strong> At Cosgrove Leisure, the sales team struggled to create on-brand marketing materials due to limited design skills.</p>
                 <p><strong>Task:</strong> I needed to develop a solution that ensured brand consistency in sales materials while being easy for non-designers to use.</p>
                 <p><strong>Action:</strong> I designed user-friendly overlay templates for Canva and PowerPoint, incorporating our brand colors, fonts, and layouts. I also created a guide on using these templates and held training sessions for the sales team.</p>
-                <p><strong>Result:</strong> This initiative achieved brand consistency across all sales materials. It also reduced the design team's workload by 40% and empowered the sales team to independently create professional-looking content.</p>
+                <p><strong>Result:</strong> Achieved brand consistency across all sales materials, reduced the design team's workload by <span class="result">40%</span>, and empowered the sales team to create professional content.</p>
             </div>
         </div>
-    
-        <button class="accordion">Web Content & UX Management</button>
+
+        <button class="accordion">STAR Examples: Web Content & UX</button>
         <div class="panel">
             <p class="key-message">Key Message: Strategic transformation with limited resources</p>
-            
             <div class="star-block">
                 <p><strong>Situation:</strong> When I joined Cosgrove Leisure, we had multiple outdated websites with poor user experience, slow load times, and poor lead generation.</p>
                 <p><strong>Task:</strong> My task was to improve our web presence and lead generation within a limited budget.</p>
-                <p><strong>Action:</strong> I implemented a WordPress solution using Elementor and the Houzez theme, customized for our holiday park sales. I integrated our CRM, created an easy-to-use listing management system, added a booking system, and consolidated all parks under one website.</p>
-                <p><strong>Result:</strong> These changes significantly improved our search engine rankings, increased lead generation, and boosted sales. We achieved a more professional online presence, comparable to larger competitors, despite budget constraints.</p>
+                <p><strong>Action:</strong> I implemented a WordPress solution using Elementor and the Houzez theme. I integrated our CRM, created an easy-to-use listing management system, added a booking system, and consolidated all parks under one website.</p>
+                <p><strong>Result:</strong> Significantly improved our search engine rankings, increased lead generation, and boosted sales. Achieved a more professional online presence, comparable to larger competitors, despite budget constraints.</p>
             </div>
         </div>
-    
-        <button class="accordion">Project Management Excellence</button>
+
+        <button class="accordion">STAR Examples: Project Management</button>
         <div class="panel">
             <p class="key-message">Key Message: Adaptive project management for maximum efficiency</p>
-    
             <div class="star-block">
                 <p><strong>Situation:</strong> At Cosgrove Leisure, I managed several digital projects simultaneously, including a website redesign, branding updates, and creating marketing collateral. The challenge was compounded by limited digital infrastructure and communication systems.</p>
                 <p><strong>Task:</strong> I needed to coordinate these projects efficiently, keep stakeholders aligned, and meet tight deadlines.</p>
                 <p><strong>Action:</strong> I used Trello for visual project management, adopted an Agile-like approach with sprints and deadlines, and used WhatsApp for communication. I also established regular milestone reviews.</p>
-                <p><strong>Result:</strong> This led to more streamlined workflows, fewer revision cycles, improved stakeholder engagement, and on-time delivery of all major projects, including the website revamp, marketing materials, and branding updates.</p>
+                <p><strong>Result:</strong> Led to more streamlined workflows, fewer revision cycles, improved stakeholder engagement, and on-time delivery of all major projects, including the website revamp.</p>
             </div>
         </div>
-    
-        <button class="accordion">Stakeholder Communication</button>
+
+        <button class="accordion">STAR Examples: Stakeholder Communication</button>
         <div class="panel">
             <p class="key-message">Key Message: Making design tangible through interactive prototyping</p>
-    
             <div class="star-block">
                 <p><strong>Situation:</strong> When presenting creative concepts for landing pages to non-design stakeholders, static mockups often led to misunderstandings and lengthy revisions.</p>
                 <p><strong>Task:</strong> I aimed to improve how we visualized concepts to stakeholders, streamline the feedback process, and reduce wasted development time.</p>
                 <p><strong>Action:</strong> I started creating quick interactive prototypes using the Relume Library. This allowed stakeholders to interact with the designs early on. I also implemented early prototype reviews and facilitated hands-on demonstrations.</p>
-                <p><strong>Result:</strong> This approach resulted in faster revision cycles, a quicker approval process, and better stakeholder buy-in, as the interactive prototypes made the design concepts much clearer.</p>
+                <p><strong>Result:</strong> Resulted in faster revision cycles, a quicker approval process, and better stakeholder buy-in, as the interactive prototypes made the design concepts much clearer.</p>
             </div>
         </div>
 
-        <button class="accordion">Additional Practice Prompts</button>
+        <button class="accordion">Practice Prompts</button>
         <div class="panel">
             <h3>Behavioral Questions:</h3>
             <ul>
-                <li>Tell me about a time you failed. How did you handle the situation?</li>
-                <li>Describe a time you had to work with a difficult stakeholder. How did you navigate the relationship?</li>
-                <li>Give an example of a time you had to persuade someone to see your point of view.</li>
+                <li>Tell me about a time you failed. How did you handle it?</li>
+                <li>Describe working with a difficult stakeholder. How did you navigate the relationship?</li>
+                <li>Give an example of a time you had to persuade someone.</li>
                 <li>Tell me about a time you had to learn a new skill or technology quickly.</li>
-                <li>Describe a time you had to deal with ambiguity or uncertainty on a project.</li>
-                <li>How do you stay organized and prioritize tasks when managing multiple projects?</li>
-                <li>Tell me about a time you had to adapt to a major change in direction on a project.</li>
-                <li>Describe a time when you had a creative block. How did you overcome it?</li>
-                <li>Give me an example of how you handle constructive criticism.</li>
+                <li>Describe a time you dealt with ambiguity on a project.</li>
+                <li>How do you stay organized and prioritize tasks?</li>
+                <li>Tell me about a time you had to adapt to a major change in direction.</li>
+                <li>Describe a time you had a creative block. How did you overcome it?</li>
+                <li>Give an example of how you handle constructive criticism.</li>
             </ul>
-          <h3>Technical/Skills-Based Questions:</h3>
-          <ul>
-              <li>Describe your experience with different design software (e.g., Adobe Creative Suite, Figma, Sketch).</li>
-              <li>What is your process for creating a brand style guide?</li>
-              <li>How do you approach designing for accessibility?</li>
-              <li>Describe your experience with UX/UI design principles.</li>
-              <li>How do you ensure consistency across different marketing channels?</li>
-              <li>What is your experience with A/B testing for design elements?</li>
-              <li>What are your preferred methods for gathering user feedback on designs?</li>
-              <li>How do you stay up-to-date with the latest design trends and technologies?</li>
-              <li>Describe your experience with creating and managing digital assets.</li>
-          </ul>
-          <h3>Design Challenge (Hypothetical):</h3>
-          <ul>
-              <li>Imagine PSI Services is launching a new online assessment tool. Design a landing page concept for this product, considering user experience, branding, and call to action.</li>
-              <li>How would you approach redesigning the PSI Services website to improve user engagement and lead generation?</li>
-              <li>Create a social media campaign concept to promote PSI's services to a new target audience.</li>
-          </ul>
-      </div>
-      <div class="divider"></div>
-  
-      <h2>Interview Strategy Tips</h2>
-      
-      <div class="tips">
-          <h3>Preparation Checklist</h3>
-          <ul class="checklist">
-              <li>Review each STAR response thoroughly and practice out loud.</li>
-              <li>Practice delivering responses within 2-3 minutes.</li>
-              <li>Prepare specific metrics and numbers to quantify your impact (e.g., "reduced workload by 40%," "increased leads by 20%").</li>
-              <li>Have additional examples ready for follow-up questions or to showcase different skills.</li>
-              <li>Research the company and interviewers thoroughly (if possible).</li>
-              <li>Prepare thoughtful questions to ask the interviewers.</li>
-          </ul>
+            <h3>Technical/Skills-Based Questions:</h3>
+            <ul>
+                <li>Describe your experience with design software (Adobe, Figma, Sketch, etc.). How does this relate to website design?</li>
+                <li>What is your process for creating a brand style guide, and how does it apply to website design?</li>
+                <li>How do you approach designing for accessibility on websites?</li>
+                <li>Describe your experience with UX/UI design principles, particularly for web.</li>
+                <li>How do you ensure consistency in design and messaging across different digital marketing channels, including websites?</li>
+                <li>What is your experience with A/B testing for website design elements?</li>
+                <li>What are your preferred methods for gathering user feedback on website designs?</li>
+                <li>How do you stay up-to-date with the latest design trends and technologies, especially in web design?</li>
+                <li>Describe your experience with creating and managing digital assets for websites.</li>
+            </ul>
+            <h3>Design Challenge (Hypothetical):</h3>
+            <ul>
+                <li>Imagine PSI Services is launching a new online assessment tool. Design a landing page concept for this product, considering user experience, branding, and call to action.</li>
+                <li>How would you approach redesigning the PSI Services website to improve user engagement and lead generation? Consider Megan Gaffney's role in your proposal.</li>
+                <li>Create a social media campaign concept to promote PSI's services to a new target audience. Include a plan for how this campaign would integrate with the website.</li>
+            </ul>
+        </div>
 
-          <h3>Response Framework (STAR Method)</h3>
-          <ol>
-              <li><strong>Situation:</strong> Briefly describe the context or background.</li>
-              <li><strong>Task:</strong> Explain your specific responsibility or objective.</li>
-              <li><strong>Action:</strong> Detail the steps you took to address the situation.</li>
-              <li><strong>Result:</strong> Share the positive outcomes and quantify them whenever possible.</li>
-          </ol>
+        <div class="divider"></div>
 
-          <h3>Key Competencies to Highlight</h3>
-          <ul>
-              <li><strong>Strategic Thinking:</strong> Emphasize your ability to see the bigger picture and plan accordingly.</li>
-              <li><strong>Resource Optimization:</strong> Showcase your skills in using limited resources effectively.</li>
-              <li><strong>Team Empowerment:</strong> Highlight your experience in enabling and motivating others.</li>
-              <li><strong>Stakeholder Management:</strong> Demonstrate your ability to communicate and collaborate with different stakeholders.</li>
-              <li><strong>Technical Adaptability:</strong> Show your willingness and ability to learn and use new technologies.</li>
-              <li><strong>Results-Driven Approach:</strong> Focus on the positive outcomes and impact of your work.</li>
-          </ul>
+        <h2>Interview Strategy Tips</h2>
+        <div class="tips">
+            <h3>Preparation Checklist</h3>
+            <ul class="checklist">
+                <li>Review each STAR response thoroughly and practice out loud.</li>
+                <li>Practice delivering responses within 2-3 minutes.</li>
+                <li>Prepare specific metrics and numbers to quantify your impact.</li>
+                <li>Have additional examples ready for follow-up questions.</li>
+                <li>Research PSI Services and Megan Gaffney thoroughly.</li>
+                <li>Prepare thoughtful questions to ask Megan.</li>
+            </ul>
 
-          <h3>Follow-up Questions to Prepare For</h3>
-          <ul>
-              <li>How do you handle conflicting stakeholder feedback?</li>
-              <li>What's your approach to working within tight budget constraints?</li>
-              <li>How do you prioritize competing deadlines and manage your time effectively?</li>
-              <li>What's your process for evaluating the effectiveness of your design work?</li>
-          </ul>
-      </div>
-  </div>
-  <div id="During" class="tabcontent">
-    <div class="expand-collapse-container">
-        <button onclick="expandAll('During')">Expand All</button>
-        <button onclick="collapseAll('During')">Collapse All</button>
+            <h3>Response Framework (STAR Method)</h3>
+            <ol>
+                <li><strong>Situation:</strong> Briefly describe the context.</li>
+                <li><strong>Task:</strong> Explain your responsibility.</li>
+                <li><strong>Action:</strong> Detail the steps you took.</li>
+                <li><strong>Result:</strong> Share the outcomes (quantify them!).</li>
+            </ol>
+
+            <h3>Key Competencies to Highlight</h3>
+            <ul>
+                <li><strong>Strategic Thinking:</strong> Emphasize planning, especially in relation to website strategy.</li>
+                <li><strong>Resource Optimization:</strong> Showcase using resources effectively in web projects.</li>
+                <li><strong>Team Empowerment:</strong> Highlight enabling others in design and content creation.</li>
+                <li><strong>Stakeholder Management:</strong> Demonstrate communication with stakeholders, including web managers.</li>
+                <li><strong>Technical Adaptability:</strong> Show willingness to learn new web design and digital marketing technologies.</li>
+                <li><strong>Results-Driven Approach:</strong> Focus on the impact of your work, especially on website performance.</li>
+            </ul>
+
+            <h3>Follow-up Questions to Prepare For</h3>
+            <ul>
+                <li>How do you handle conflicting stakeholder feedback on website design?</li>
+                <li>What's your approach to working within tight budgets on web projects?</li>
+                <li>How do you prioritize competing deadlines in website updates or redesigns?</li>
+                <li>What's your process for evaluating the effectiveness of your web design work?</li>
+            </ul>
+        </div>
     </div>
 
-    <div class="response-block">
-        <h2>Question 1: Brand Guidelines & Creativity</h2>
-        <p><strong>Challenge:</strong> Inconsistent branding due to limited design skills in the sales team.</p>
-        <p><strong>Solution:</strong> User-friendly Canva/PowerPoint templates with brand guidelines.</p>
-        <p><strong>Key Points:</strong></p>
-        <ul class="key-points">
-            <li>Empowered sales team</li>
-            <li>Maintained brand consistency</li>
-        </ul>
-        <p><strong>Metrics:</strong> 40% less workload for the design team.</p>
+    <div id="During" class="tabcontent">
+        <div class="expand-collapse-container">
+            <button onclick="expandAll('During')">Expand All</button>
+            <button onclick="collapseAll('During')">Collapse All</button>
+        </div>
+
+        <div class="response-block">
+            <h2>Question 1: Brand Guidelines & Creativity</h2>
+            <p><strong style="color: var(--primary-color);">Cosgrove Leisure:</strong> Sales team created inconsistent marketing materials.</p>
+            <p><strong style="color: var(--primary-color);">My Task:</strong> Ensure brand consistency, empower non-designers.</p>
+            <p><strong style="color: var(--primary-color);">Actions:</strong></p>
+            <ul class="key-points">
+                <li>User-friendly Canva/PowerPoint templates with brand colors, fonts, layouts.</li>
+                <li>Created a guide and training for the sales team.</li>
+            </ul>
+            <p><strong style="color: var(--primary-color);">Result:</strong> <span class="result">40%</span> less workload for the design team, consistent branding.</p>
+        </div>
+
+        <div class="response-block">
+            <h2>Question 2: Website Redesign</h2>
+            <p><strong style="color: var(--primary-color);">Cosgrove Leisure:</strong> Outdated websites (poor UX, slow, low lead gen), limited budget.</p>
+            <p><strong style="color: var(--primary-color);">My Task:</strong> Improve web presence, increase leads cost-effectively.</p>
+            <p><strong style="color: var(--primary-color);">Actions:</strong></p>
+            <ul class="key-points">
+                <li>WordPress (Elementor/Houzez), customized for holiday park sales.</li>
+                <li>CRM integration, easy listing management, booking system, consolidation.</li>
+            </ul>
+            <p><strong style="color: var(--primary-color);">Result:</strong> <span class="result">Improved rankings, more leads & sales</span>, professional online presence.</p>
+        </div>
+
+        <div class="response-block">
+            <h2>Question 3: Project Management</h2>
+            <p><strong style="color: var(--primary-color);">Cosgrove Leisure:</strong> Multiple projects (website redesign, branding, marketing collateral), limited digital infrastructure.</p>
+            <p><strong style="color: var(--primary-color);">My Task:</strong> Coordinate projects, align stakeholders, meet deadlines.</p>
+            <p><strong style="color: var(--primary-color);">Actions:</strong></p>
+            <ul class="key-points">
+                <li>Trello for project management, Agile sprints, WhatsApp for communication.</li>
+                <li>Regular milestone reviews.</li>
+            </ul>
+            <p><strong style="color: var(--primary-color);">Result:</strong> <span class="result">Streamlined workflows, on-time delivery</span> of all major projects.</p>
+        </div>
+
+        <div class="response-block">
+            <h2>Question 4: Stakeholder Communication</h2>
+            <p><strong style="color: var(--primary-color);">Cosgrove Leisure:</strong> Misunderstandings with non-design stakeholders using static mockups.</p>
+            <p><strong style="color: var(--primary-color);">My Task:</strong> Improve concept visualization, streamline feedback.</p>
+            <p><strong style="color: var(--primary-color);">Actions:</strong></p>
+            <ul class="key-points">
+                <li>Interactive prototypes (Relume Library) for early stakeholder interaction.</li>
+                <li>Early prototype reviews, hands-on demonstrations.</li>
+            </ul>
+            <p><strong style="color: var(--primary-color);">Result:</strong> <span class="result">Faster revisions, quicker approvals</span>, better stakeholder buy-in.</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="bullet-points">
+            <h2>STAR Method Reminder</h2>
+            <p><strong style="color: var(--primary-color);">S</strong>ituation, <strong style="color: var(--primary-color);">T</strong>ask, <strong style="color: var(--primary-color);">A</strong>ction, <strong style="color: var(--primary-color);">R</strong>esult (Quantify!)</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="bullet-points">
+            <h2>Keywords</h2>
+            <p>Brand consistency, user-friendly, Canva, PowerPoint, WordPress, Elementor, CRM, project management, Trello, Agile, stakeholder communication, interactive prototypes, metrics, results, website management, UX/UI.</p>
+        </div>
     </div>
 
-    <div class="response-block">
-        <h2>Question 2: Website Redesign</h2>
-        <p><strong>Challenge:</strong> Outdated websites, poor UX, low lead generation, budget limits.</p>
-        <p><strong>Solution:</strong> WordPress, Elementor, Houzez theme, CRM integration.</p>
-        <p><strong>Key Points:</strong></p>
-        <ul class="key-points">
-            <li>Improved UX and design</li>
-            <li>Centralized website</li>
-        </ul>
-        <p><strong>Metrics:</strong> Better search rankings, more leads and sales.</p>
-    </div>
-
-    <div class="response-block">
-        <h2>Question 3: Project Management</h2>
-        <p><strong>Challenge:</strong> Multiple projects, minimal infrastructure, communication issues.</p>
-        <p><strong>Solution:</strong> Trello, Agile sprints, WhatsApp communication.</p>
-        <p><strong>Key Points:</strong></p>
-        <ul class="key-points">
-            <li>Efficient workflows</li>
-            <li>On-time delivery</li>
-        </ul>
-        <p><strong>Metrics:</strong> Fewer revisions, better stakeholder engagement.</p>
-    </div>
-
-    <div class="response-block">
-        <h2>Question 4: Stakeholder Communication</h2>
-        <p><strong>Challenge:</strong> Explaining designs to non-design stakeholders.</p>
-        <p><strong>Solution:</strong> Interactive prototypes (Relume Library).</p>
-        <p><strong>Key Points:</strong></p>
-        <ul class="key-points">
-            <li>Clearer communication</li>
-            <li>Faster approvals</li>
-        </ul>
-        <p><strong>Metrics:</strong> Reduced revisions, improved stakeholder buy-in.</p>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="bullet-points">
-        <h2>STAR Method Reminder</h2>
-        <ul>
-            <li><strong>S</strong>ituation</li>
-            <li><strong>T</strong>ask</li>
-            <li><strong>A</strong>ction</li>
-            <li><strong>R</strong>esult (Quantify!)</li>
-        </ul>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="bullet-points">
-        <h2>Keywords</h2>
-        <p>Brand consistency, user-friendly design, WordPress, Elementor, CRM, project management, stakeholder communication, interactive prototypes, metrics, results-driven.</p>
-    </div>
-</div>
-
-<script>
-    function openTab(evt, tabName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.className += " active";
-    }
-
-    var acc = document.getElementsByClassName("accordion");
-    var i;
-
-    for (i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var panel = this.nextElementSibling;
-            if (panel.style.display === "block") {
-                panel.style.display = "none";
-                panel.style.maxHeight = null;
-            } else {
-                panel.style.display = "block";
-                panel.style.maxHeight = panel.scrollHeight + "px";
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
             }
-        });
-    }
-     // Add Expand All/Collapse All functionality
-    function expandAll(tabId) {
-      const accordions = document.querySelectorAll(`#${tabId} .accordion`);
-      accordions.forEach(accordion => {
-        accordion.classList.add('active');
-        const panel = accordion.nextElementSibling;
-        panel.style.display = 'block';
-        panel.style.maxHeight = panel.scrollHeight + 'px'; // Set to actual height
-      });
-    }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
 
-    function collapseAll(tabId) {
-      const accordions = document.querySelectorAll(`#${tabId} .accordion`);
-      accordions.forEach(accordion => {
-        accordion.classList.remove('active');
-        const panel = accordion.nextElementSibling;
-        panel.style.display = 'none';
-        panel.style.maxHeight = null;
-      });
-    }
-</script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.display = "block";
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        }
+
+        function expandAll(tabId) {
+            const accordions = document.querySelectorAll(`#${tabId} .accordion`);
+            accordions.forEach(accordion => {
+                accordion.classList.add('active');
+                const panel = accordion.nextElementSibling;
+                panel.style.display = 'block';
+                panel.style.maxHeight = panel.scrollHeight + 'px';
+            });
+        }
+
+        function collapseAll(tabId) {
+            const accordions = document.querySelectorAll(`#${tabId} .accordion`);
+            accordions.forEach(accordion => {
+                accordion.classList.remove('active');
+                const panel = accordion.nextElementSibling;
+                panel.style.display = 'none';
+                panel.style.maxHeight = null;
+            });
+        }
+    </script>
 
 </body>
 </html>
